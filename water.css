@@ -1,0 +1,157 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 98vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #1F1F1F;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    color: #2c426b;
+}
+
+.bottle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.arms {
+    display: flex;
+    flex-direction: row;
+}
+
+.arm {
+    width: 10px;
+    height: 300px;
+    background-color: #2e4154;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+
+.bot {
+    width: 235px;
+    height: 10px;
+    background-color: #2e4154;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.water {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.w1 {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+
+.lilw {
+    width: 215px;
+    height: 50px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    font-size: 5em;
+    width: 200px;
+    height: 70px;
+}
+
+.plus {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: solid 4px #1F1F1F;
+    border-radius: 15px;
+    padding: 10px;
+
+}
+
+.parm {
+    width: 22px;
+    height: 8px;
+    background-color: #dd7f7fbb;
+    pointer-events: none;
+}
+
+.pl {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.pr {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.pmid {
+    width: 8px;
+    height: 50px;
+    background-color: #dd7f7fbb;
+    border-radius: 25px;
+    pointer-events: none;
+}
+
+.minus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 4px #1F1F1F;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.marm {
+    width: 50px;
+    height: 8px;
+    background-color: #34495e;
+    border-radius: 25px;
+    pointer-events: none;
+}
+
+.txt {
+    position: absolute;
+    text-align: center;
+    font-size: 3em;
+    top: 35%;
+}
+
+.kripl {
+    position: absolute;
+    text-align: center;
+    font-size: 3em;
+    top: 1%;
+}
+
+.head {
+    display: flex;
+    flex-direction: column;
+}
+
+/*.mes {
+    width: 50px;
+    height: 20px;
+    background-color: #1F1F1F;
+    align-self: flex-end;
+    border-radius: 7px;
+    border: solid 2px #1F1F1F;
+    color: #1F1F1F;
+    font-size: 17px;
+    text-align: center;
+    position: relative;
+    top: -50px;
+}
+*/
