@@ -11,24 +11,55 @@ let minus = document.querySelector(".minus");
 let txt = document.querySelector(".txt");
 let x;
 const head = document.querySelector(".head");
-//let mes = document.querySelector(".mes");
+let curcolor="#4d86bf";
 
+function mesplus() {
+    const mes = document.createElement("div");
+    head.prepend(mes);
+    mes.style.width = "50px";
+    mes.style.height = "20px";
+    mes.style.backgroundColor = "#1F1F1F";
+    mes.style.alignSelf = "flex-end";
+    mes.style.borderRadius = "7px";
+    mes.style.border = "solid 2px #1F1F1F";
+    mes.style.color = "#1F1F1F";
+    mes.style.fontSize = "17px";
+    mes.style.textAlign = "center";
+    mes.style.position = "absolute";
+    mes.textContent = "+500";
+    if (document.body.clientHeight <= 600) {
+        mes.style.left = "790px";
+        const mesanim = mes.animate(
+            [
+                {
+                    top: "70px"
+                },
+                {
+                    top: "95px",
+                    color: "#627a47",
+                    borderColor: "#627a47"
+                },
+                {
+                    top: "120px",
+                    color: "#1F1F1F",
+                    borderColor: "#1F1F1F"
+                },
+            ],
+            {
+                duration: 700,
+                easing: "linear",
+            }
+        );
 
-plus.addEventListener('mousedown', function (event) {
-    function mesplus() {
-        const mes = document.createElement("div");
-        head.prepend(mes);
-        mes.style.width = "50px";
-        mes.style.height = "20px";
-        mes.style.backgroundColor = "#1F1F1F";
-        mes.style.alignSelf = "flex-end";
-        mes.style.borderRadius = "7px";
-        mes.style.border = "solid 2px #1F1F1F";
-        mes.style.color = "#1F1F1F";
-        mes.style.fontSize = "17px";
-        mes.style.textAlign = "center";
-        mes.style.position = "absolute";
-        mes.textContent = "+500";
+        mesanim.addEventListener('finish', function (event) {
+            mes.remove();
+        });
+        mesanim.addEventListener('cancel', function (event) {
+            mes.remove();
+        });
+    }
+    else {
+        mes.style.left = "";
         const mesanim = mes.animate(
             [
                 {
@@ -58,12 +89,95 @@ plus.addEventListener('mousedown', function (event) {
             mes.remove();
         });
     }
+
+}
+
+function mesminus() {
+    const mes = document.createElement("div");
+    head.prepend(mes);
+    mes.style.width = "50px";
+    mes.style.height = "20px";
+    mes.style.backgroundColor = "#1F1F1F";
+    mes.style.alignSelf = "flex-end";
+    mes.style.borderRadius = "7px";
+    mes.style.border = "solid 2px #1F1F1F";
+    mes.style.color = "#1F1F1F";
+    mes.style.fontSize = "17px";
+    mes.style.textAlign = "center";
+    mes.style.position = "absolute";
+    mes.textContent = "-500";
+    if (document.body.clientHeight <= 600) {
+        mes.style.left = "790px";
+        const mesanim = mes.animate(
+            [
+                {
+                    top: "70px"
+                },
+                {
+                    top: "95px",
+                    color: "#9e4634",
+                    borderColor: "#9e4634"
+                },
+                {
+                    top: "120px",
+                    color: "#1F1F1F",
+                    borderColor: "#1F1F1F"
+                },
+            ],
+            {
+                duration: 700,
+                easing: "linear",
+            }
+        );
+        mesanim.addEventListener('finish', function (event) {
+            mes.remove();
+        });
+        mesanim.addEventListener('cancel', function (event) {
+            mes.remove();
+        });
+    }
+
+    else {
+        mes.style.left = "";
+        const mesanim = mes.animate(
+            [
+                {
+                    top: "130px"
+                },
+                {
+                    top: "155px",
+                    color: "#9e4634",
+                    borderColor: "#9e4634"
+                },
+                {
+                    top: "180px",
+                    color: "#1F1F1F",
+                    borderColor: "#1F1F1F"
+                },
+            ],
+            {
+                duration: 700,
+                easing: "linear",
+            }
+        );
+        mesanim.addEventListener('finish', function (event) {
+            mes.remove();
+        });
+        mesanim.addEventListener('cancel', function (event) {
+            mes.remove();
+        });
+    }
+
+}
+
+plus.addEventListener('mousedown', function (event) {
     if (x == 3000) {
         x = 3000;
         w1.style.backgroundColor = "#4d86bf";
     }
     else if (x == 2500) {
         x += 500;
+
         w1.style.height = "0px";
         w1.style.backgroundColor = "#4d86bf";
         const w1a = w1.animate(
@@ -251,48 +365,6 @@ plus.addEventListener('mousedown', function (event) {
 });
 
 minus.addEventListener('mousedown', function (event) {
-    function mesminus() {
-        const mes = document.createElement("div");
-        head.prepend(mes);
-        mes.style.width = "50px";
-        mes.style.height = "20px";
-        mes.style.backgroundColor = "#1F1F1F";
-        mes.style.alignSelf = "flex-end";
-        mes.style.borderRadius = "7px";
-        mes.style.border = "solid 2px #1F1F1F";
-        mes.style.color = "#1F1F1F";
-        mes.style.fontSize = "17px";
-        mes.style.textAlign = "center";
-        mes.style.position = "absolute";
-        mes.textContent = "-500";
-        const mesanim = mes.animate(
-            [
-                {
-                    top: "130px"
-                },
-                {
-                    top: "155px",
-                    color: "#9e4634",
-                    borderColor: "#9e4634"
-                },
-                {
-                    top: "180px",
-                    color: "#1F1F1F",
-                    borderColor: "#1F1F1F"
-                },
-            ],
-            {
-                duration: 700,
-                easing: "linear",
-            }
-        );
-        mesanim.addEventListener('finish', function (event) {
-            mes.remove();
-        });
-        mesanim.addEventListener('cancel', function (event) {
-            mes.remove();
-        });
-    }
     if (x == 500) {
         x -= 500;
         const w6a2 = w6.animate(
