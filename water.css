@@ -8,6 +8,7 @@ body {
     font-family: "Roboto", sans-serif;
     font-style: normal;
     color: #2c426b;
+    /*transform: scale(1);*/
 }
 
 .bottle {
@@ -21,6 +22,7 @@ body {
 .arms {
     display: flex;
     flex-direction: row;
+    pointer-events: none;
 }
 
 .arm {
@@ -38,6 +40,7 @@ body {
     background-color: #2e4154;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    pointer-events: none;
 }
 
 .water {
@@ -51,10 +54,15 @@ body {
     border-top-left-radius: 10px;
 }
 
+.w6 {
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+}
 
 .lilw {
     width: 215px;
     height: 50px;
+    pointer-events: none;
 }
 
 .buttons {
@@ -127,6 +135,13 @@ body {
     text-align: center;
     font-size: 3em;
     top: 35%;
+    pointer-events: none;
+}
+
+.negr {
+    position: absolute;
+    text-align: center;
+    font-size: 3em;
 }
 
 .kripl {
@@ -141,17 +156,17 @@ body {
     flex-direction: column;
 }
 
-/*.mes {
-    width: 50px;
-    height: 20px;
-    background-color: #1F1F1F;
-    align-self: flex-end;
-    border-radius: 7px;
-    border: solid 2px #1F1F1F;
-    color: #1F1F1F;
-    font-size: 17px;
-    text-align: center;
-    position: relative;
-    top: -50px;
-}
-*/
+/* .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw;
+    height: 80vh;
+    background-color: red;
+    border-radius: 25px;
+    background-color: #2c426bec;
+    border: solid 4px #c5d3e1;
+    border-top:solid 15px #c5d3e1;
+} */
+
