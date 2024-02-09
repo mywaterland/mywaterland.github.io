@@ -11,18 +11,70 @@ let minus = document.querySelector(".minus");
 let txt = document.querySelector(".txt");
 let x;
 const head = document.querySelector(".head");
-let curcolor="#4d86bf";
+let curcolor = "#4d86bf";
+let curcover = "#84a4c5";
+let nocolor = "#1F1F1F";
+let bottle = document.querySelector(".bottle");
+document.body.style.backgroundColor = nocolor;
+document.body.style.transform = "scale(0)";
+
+this.addEventListener('load', function (event) {
+    const bodyanim = document.body.animate(
+        [
+            {
+                transform: "scale(0)"
+            },
+            {
+                transform: "scale(0.1)"
+            },
+            {
+                transform: "scale(0.2)"
+            },
+            {
+                transform: "scale(0.3)"
+            },
+            {
+                transform: "scale(0.4)"
+            },
+            {
+                transform: "scale(0.5)"
+            },
+            {
+                transform: "scale(0.6)"
+            },
+            {
+                transform: "scale(0.7)"
+            },
+            {
+                transform: "scale(0.8)"
+            },
+            {
+                transform: "scale(0.9)"
+            },
+            {
+                transform: "scale(1)"
+            },
+        ],
+        {
+            duration: 300,
+            easing: "linear",
+        }
+    );
+    bodyanim.addEventListener('finish', function (event) {
+        document.body.style.transform = "scale(1)";
+    });
+});
 
 function mesplus() {
     const mes = document.createElement("div");
     head.prepend(mes);
     mes.style.width = "50px";
     mes.style.height = "20px";
-    mes.style.backgroundColor = "#1F1F1F";
+    mes.style.backgroundColor = nocolor;
     mes.style.alignSelf = "flex-end";
     mes.style.borderRadius = "7px";
     mes.style.border = "solid 2px #1F1F1F";
-    mes.style.color = "#1F1F1F";
+    mes.style.color = nocolor;
     mes.style.fontSize = "17px";
     mes.style.textAlign = "center";
     mes.style.position = "absolute";
@@ -41,8 +93,8 @@ function mesplus() {
                 },
                 {
                     top: "120px",
-                    color: "#1F1F1F",
-                    borderColor: "#1F1F1F"
+                    color: nocolor,
+                    borderColor: nocolor
                 },
             ],
             {
@@ -72,8 +124,8 @@ function mesplus() {
                 },
                 {
                     top: "180px",
-                    color: "#1F1F1F",
-                    borderColor: "#1F1F1F"
+                    color: nocolor,
+                    borderColor: nocolor
                 },
             ],
             {
@@ -97,11 +149,11 @@ function mesminus() {
     head.prepend(mes);
     mes.style.width = "50px";
     mes.style.height = "20px";
-    mes.style.backgroundColor = "#1F1F1F";
+    mes.style.backgroundColor = nocolor;
     mes.style.alignSelf = "flex-end";
     mes.style.borderRadius = "7px";
     mes.style.border = "solid 2px #1F1F1F";
-    mes.style.color = "#1F1F1F";
+    mes.style.color = nocolor;
     mes.style.fontSize = "17px";
     mes.style.textAlign = "center";
     mes.style.position = "absolute";
@@ -120,8 +172,8 @@ function mesminus() {
                 },
                 {
                     top: "120px",
-                    color: "#1F1F1F",
-                    borderColor: "#1F1F1F"
+                    color: nocolor,
+                    borderColor: nocolor
                 },
             ],
             {
@@ -151,8 +203,8 @@ function mesminus() {
                 },
                 {
                     top: "180px",
-                    color: "#1F1F1F",
-                    borderColor: "#1F1F1F"
+                    color: nocolor,
+                    borderColor: nocolor
                 },
             ],
             {
@@ -173,13 +225,12 @@ function mesminus() {
 plus.addEventListener('mousedown', function (event) {
     if (x == 3000) {
         x = 3000;
-        w1.style.backgroundColor = "#4d86bf";
+        w1.style.backgroundColor = curcolor;
     }
     else if (x == 2500) {
         x += 500;
-
         w1.style.height = "0px";
-        w1.style.backgroundColor = "#4d86bf";
+        w1.style.backgroundColor = curcolor;
         const w1a = w1.animate(
             [
                 {
@@ -196,19 +247,19 @@ plus.addEventListener('mousedown', function (event) {
         );
         w1a.addEventListener('finish', function (event) {
             w1.style.height = "50px";
-            w1.style.backgroundColor = "#4d86bf";
+            w1.style.backgroundColor = curcolor;
         });
 
         w1a.addEventListener('cancel', function (event) {
             w1.style.height = "50px";
-            w1.style.backgroundColor = "#4d86bf";
+            w1.style.backgroundColor = curcolor;
         });
         mesplus();
     }
     else if (x == 2000) {
         x += 500;
         w2.style.height = "0px";
-        w2.style.backgroundColor = "#4d86bf";
+        w2.style.backgroundColor = curcolor;
         const w2a = w2.animate(
             [
                 {
@@ -225,18 +276,18 @@ plus.addEventListener('mousedown', function (event) {
         );
         w2a.addEventListener('finish', function (event) {
             w2.style.height = "50px";
-            w2.style.backgroundColor = "#4d86bf";
+            w2.style.backgroundColor = curcolor;
         });
         w2a.addEventListener('cancel', function (event) {
             w2.style.height = "50px";
-            w2.style.backgroundColor = "#4d86bf";
+            w2.style.backgroundColor = curcolor;
         });
         mesplus();
     }
     else if (x == 1500) {
         x += 500;
         w3.style.height = "0px";
-        w3.style.backgroundColor = "#4d86bf";
+        w3.style.backgroundColor = curcolor;
         const w3a = w3.animate(
             [
                 {
@@ -253,18 +304,18 @@ plus.addEventListener('mousedown', function (event) {
         );
         w3a.addEventListener('finish', function (event) {
             w3.style.height = "50px";
-            w3.style.backgroundColor = "#4d86bf";
+            w3.style.backgroundColor = curcolor;
         });
         w3a.addEventListener('cancel', function (event) {
             w3.style.height = "50px";
-            w3.style.backgroundColor = "#4d86bf";
+            w3.style.backgroundColor = curcolor;
         });
         mesplus();
     }
     else if (x == 1000) {
         x += 500;
         w4.style.height = "0px";
-        w4.style.backgroundColor = "#4d86bf";
+        w4.style.backgroundColor = curcolor;
         const w4a = w4.animate(
             [
                 {
@@ -281,18 +332,18 @@ plus.addEventListener('mousedown', function (event) {
         );
         w4a.addEventListener('finish', function (event) {
             w4.style.height = "50px";
-            w4.style.backgroundColor = "#4d86bf";
+            w4.style.backgroundColor = curcolor;
         });
         w4a.addEventListener('cancel', function (event) {
             w4.style.height = "50px";
-            w4.style.backgroundColor = "#4d86bf";
+            w4.style.backgroundColor = curcolor;
         });
         mesplus();
     }
     else if (x == 500) {
         x += 500;
         w5.style.height = "0px";
-        w5.style.backgroundColor = "#4d86bf";
+        w5.style.backgroundColor = curcolor;
         const w5a = w5.animate(
             [
                 {
@@ -309,11 +360,11 @@ plus.addEventListener('mousedown', function (event) {
         );
         w5a.addEventListener('finish', function (event) {
             w5.style.height = "50px";
-            w5.style.backgroundColor = "#4d86bf";
+            w5.style.backgroundColor = curcolor;
         });
         w5a.addEventListener('cancel', function (event) {
             w5.style.height = "50px";
-            w5.style.backgroundColor = "#4d86bf";
+            w5.style.backgroundColor = curcolor;
         });
         mesplus();
     }
@@ -321,7 +372,7 @@ plus.addEventListener('mousedown', function (event) {
         x = 0;
         x += 500;
         w6.style.height = "0px";
-        w6.style.backgroundColor = "#4d86bf";
+        w6.style.backgroundColor = curcolor;
         const w6a = w6.animate(
             [
                 {
@@ -338,11 +389,11 @@ plus.addEventListener('mousedown', function (event) {
         );
         w6a.addEventListener('finish', function (event) {
             w6.style.height = "50px";
-            w6.style.backgroundColor = "#4d86bf";
+            w6.style.backgroundColor = curcolor;
         });
         w6a.addEventListener('cancel', function (event) {
             w6.style.height = "50px";
-            w6.style.backgroundColor = "#4d86bf";
+            w6.style.backgroundColor = curcolor;
         });
         mesplus();
     }
@@ -382,12 +433,12 @@ minus.addEventListener('mousedown', function (event) {
             }
         );
         w6a2.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = "#1F1F1F";
+            w6.style.backgroundColor = nocolor;
             var inputW6 = w6.style.backgroundColor;
             localStorage.setItem('userDataw6', inputW6);
         });
         w6a2.addEventListener('cancel', function (event) {
-            w6.style.backgroundColor = "#1F1F1F";
+            w6.style.backgroundColor = nocolor;
             var inputW6 = w6.style.backgroundColor;
             localStorage.setItem('userDataw6', inputW6);
         });
@@ -410,12 +461,12 @@ minus.addEventListener('mousedown', function (event) {
             }
         );
         w5a2.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = "#1F1F1F";
+            w5.style.backgroundColor = nocolor;
             var inputW5 = w5.style.backgroundColor;
             localStorage.setItem('userDataw5', inputW5);
         });
         w5a2.addEventListener('cancel', function (event) {
-            w5.style.backgroundColor = "#1F1F1F";
+            w5.style.backgroundColor = nocolor;
             var inputW5 = w5.style.backgroundColor;
             localStorage.setItem('userDataw5', inputW5);
         });
@@ -438,12 +489,12 @@ minus.addEventListener('mousedown', function (event) {
             }
         );
         w4a2.addEventListener('finish', function (event) {
-            w4.style.backgroundColor = "#1F1F1F";
+            w4.style.backgroundColor = nocolor;
             var inputW4 = w4.style.backgroundColor;
             localStorage.setItem('userDataw4', inputW4);
         });
         w4a2.addEventListener('cancel', function (event) {
-            w4.style.backgroundColor = "#1F1F1F";
+            w4.style.backgroundColor = nocolor;
             var inputW4 = w4.style.backgroundColor;
             localStorage.setItem('userDataw4', inputW4);
         });
@@ -466,12 +517,12 @@ minus.addEventListener('mousedown', function (event) {
             }
         );
         w3a2.addEventListener('finish', function (event) {
-            w3.style.backgroundColor = "#1F1F1F";
+            w3.style.backgroundColor = nocolor;
             var inputW3 = w3.style.backgroundColor;
             localStorage.setItem('userDataw3', inputW3);
         });
         w3a2.addEventListener('cancel', function (event) {
-            w3.style.backgroundColor = "#1F1F1F";
+            w3.style.backgroundColor = nocolor;
             var inputW3 = w3.style.backgroundColor;
             localStorage.setItem('userDataw3', inputW3);
         });
@@ -494,12 +545,12 @@ minus.addEventListener('mousedown', function (event) {
             }
         );
         w2a2.addEventListener('finish', function (event) {
-            w2.style.backgroundColor = "#1F1F1F";
+            w2.style.backgroundColor = nocolor;
             var inputW2 = w2.style.backgroundColor;
             localStorage.setItem('userDataw2', inputW2);
         });
         w2a2.addEventListener('cancel', function (event) {
-            w2.style.backgroundColor = "#1F1F1F";
+            w2.style.backgroundColor = nocolor;
             var inputW2 = w2.style.backgroundColor;
             localStorage.setItem('userDataw2', inputW2);
         });
@@ -522,12 +573,12 @@ minus.addEventListener('mousedown', function (event) {
             }
         );
         w1a2.addEventListener('finish', function (event) {
-            w1.style.backgroundColor = "#1F1F1F";
+            w1.style.backgroundColor = nocolor;
             var inputW1 = w1.style.backgroundColor;
             localStorage.setItem('userDataw1', inputW1);
         });
         w1a2.addEventListener('cancel', function (event) {
-            w1.style.backgroundColor = "#1F1F1F";
+            w1.style.backgroundColor = nocolor;
             var inputW1 = w1.style.backgroundColor;
             localStorage.setItem('userDataw1', inputW1);
         });
@@ -535,7 +586,7 @@ minus.addEventListener('mousedown', function (event) {
     }
     else {
         x = 0;
-        w6.style.backgroundColor = "#1F1F1F";
+        w6.style.backgroundColor = nocolor;
     }
     txt.textContent = x + "ML";
     var inputData = x;
@@ -546,7 +597,7 @@ plus.addEventListener('mouseover', function (event) {
     const plusanims = plus.animate(
         [
             {
-                borderColor: "#1F1F1F"
+                borderColor: nocolor
             },
             {
                 borderColor: "#dd7f7fbb"
@@ -568,7 +619,7 @@ plus.addEventListener('mouseout', function (event) {
                 borderColor: "#dd7f7fbb"
             },
             {
-                borderColor: "#1F1F1F"
+                borderColor: nocolor
             },
         ],
         {
@@ -577,7 +628,7 @@ plus.addEventListener('mouseout', function (event) {
         }
     );
     plusanims.addEventListener('finish', function (event) {
-        plus.style.borderColor = "#1F1F1F";
+        plus.style.borderColor = nocolor;
     });
 });
 
@@ -585,7 +636,7 @@ minus.addEventListener('mouseover', function (event) {
     const minusanims = minus.animate(
         [
             {
-                borderColor: "#1F1F1F"
+                borderColor: nocolor
             },
             {
                 borderColor: "#34495e"
@@ -607,7 +658,7 @@ minus.addEventListener('mouseout', function (event) {
                 borderColor: "#34495e"
             },
             {
-                borderColor: "#1F1F1F"
+                borderColor: nocolor
             },
         ],
         {
@@ -616,8 +667,751 @@ minus.addEventListener('mouseout', function (event) {
         }
     );
     minusanims.addEventListener('finish', function (event) {
-        minus.style.borderColor = "#1F1F1F";
+        minus.style.borderColor = nocolor;
     });
+});
+
+bottle.addEventListener('mouseover', function (event) {
+    if (x == 3000) {
+        const w6over = w6.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6over.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcover;
+        });
+        const w5over = w5.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w5over.addEventListener('finish', function (event) {
+            w5.style.backgroundColor = curcover;
+        });
+        const w4over = w4.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w4over.addEventListener('finish', function (event) {
+            w4.style.backgroundColor = curcover;
+        });
+        const w3over = w3.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w3over.addEventListener('finish', function (event) {
+            w3.style.backgroundColor = curcover;
+        });
+        const w2over = w2.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w2over.addEventListener('finish', function (event) {
+            w2.style.backgroundColor = curcover;
+        });
+        const w1over = w1.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w1over.addEventListener('finish', function (event) {
+            w1.style.backgroundColor = curcover;
+        });
+    }
+    else if (x == 2500) {
+        const w6over = w6.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6over.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcover;
+        });
+        const w5over = w5.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w5over.addEventListener('finish', function (event) {
+            w5.style.backgroundColor = curcover;
+        });
+        const w4over = w4.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w4over.addEventListener('finish', function (event) {
+            w4.style.backgroundColor = curcover;
+        });
+        const w3over = w3.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w3over.addEventListener('finish', function (event) {
+            w3.style.backgroundColor = curcover;
+        });
+        const w2over = w2.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w2over.addEventListener('finish', function (event) {
+            w2.style.backgroundColor = curcover;
+        });
+    }
+    else if (x == 2000) {
+        const w6over = w6.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6over.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcover;
+        });
+        const w5over = w5.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w5over.addEventListener('finish', function (event) {
+            w5.style.backgroundColor = curcover;
+        });
+        const w4over = w4.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w4over.addEventListener('finish', function (event) {
+            w4.style.backgroundColor = curcover;
+        });
+        const w3over = w3.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w3over.addEventListener('finish', function (event) {
+            w3.style.backgroundColor = curcover;
+        });
+    }
+    else if (x == 1500) {
+        const w6over = w6.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6over.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcover;
+        });
+        const w5over = w5.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w5over.addEventListener('finish', function (event) {
+            w5.style.backgroundColor = curcover;
+        });
+        const w4over = w4.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w4over.addEventListener('finish', function (event) {
+            w4.style.backgroundColor = curcover;
+        });
+    }
+    else if (x == 1000) {
+        const w6over = w6.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6over.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcover;
+        });
+        const w5over = w5.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w5over.addEventListener('finish', function (event) {
+            w5.style.backgroundColor = curcover;
+        });
+    }
+    else if (x == 500) {
+        const w6over = w6.animate(
+            [
+                {
+                    backgroundColor: curcolor
+                },
+                {
+                    backgroundColor: curcover
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6over.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcover;
+        });
+    }
+});
+bottle.addEventListener('mouseout', function (event) {
+    if (x == 3000) {
+        const w6out = w6.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6out.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcolor;
+        });
+        const w5out = w5.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w5out.addEventListener('finish', function (event) {
+            w5.style.backgroundColor = curcolor;
+        });
+        const w4out = w4.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w4out.addEventListener('finish', function (event) {
+            w4.style.backgroundColor = curcolor;
+        });
+        const w3out = w3.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w3out.addEventListener('finish', function (event) {
+            w3.style.backgroundColor = curcolor;
+        });
+        const w2out = w2.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w2out.addEventListener('finish', function (event) {
+            w2.style.backgroundColor = curcolor;
+        });
+        const w1out = w1.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w1out.addEventListener('finish', function (event) {
+            w1.style.backgroundColor = curcolor;
+        });
+    }
+    else if (x == 2500) {
+        const w6out = w6.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6out.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcolor;
+        });
+        const w5out = w5.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w5out.addEventListener('finish', function (event) {
+            w5.style.backgroundColor = curcolor;
+        });
+        const w4out = w4.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w4out.addEventListener('finish', function (event) {
+            w4.style.backgroundColor = curcolor;
+        });
+        const w3out = w3.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w3out.addEventListener('finish', function (event) {
+            w3.style.backgroundColor = curcolor;
+        });
+        const w2out = w2.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w2out.addEventListener('finish', function (event) {
+            w2.style.backgroundColor = curcolor;
+        });
+    }
+    else if (x == 2000) {
+        const w6out = w6.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6out.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcolor;
+        });
+        const w5out = w5.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w5out.addEventListener('finish', function (event) {
+            w5.style.backgroundColor = curcolor;
+        });
+        const w4out = w4.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w4out.addEventListener('finish', function (event) {
+            w4.style.backgroundColor = curcolor;
+        });
+        const w3out = w3.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w3out.addEventListener('finish', function (event) {
+            w3.style.backgroundColor = curcolor;
+        });
+    }
+    else if (x == 1500) {
+        const w6out = w6.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6out.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcolor;
+        });
+        const w5out = w5.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w5out.addEventListener('finish', function (event) {
+            w5.style.backgroundColor = curcolor;
+        });
+        const w4out = w4.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w4out.addEventListener('finish', function (event) {
+            w4.style.backgroundColor = curcolor;
+        });
+    }
+    else if (x == 1000) {
+        const w6out = w6.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6out.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcolor;
+        });
+        const w5out = w5.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w5out.addEventListener('finish', function (event) {
+            w5.style.backgroundColor = curcolor;
+        });
+    }
+    else if (x == 500) {
+        const w6out = w6.animate(
+            [
+                {
+                    backgroundColor: curcover
+                },
+                {
+                    backgroundColor: curcolor
+                },
+            ],
+            {
+                duration: 250,
+                easing: "linear",
+            }
+        );
+        w6out.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = curcolor;
+        });
+    }
 });
 
 var storedData = localStorage.getItem('userData');
@@ -671,3 +1465,6 @@ if (storedDataw2) {
 if (storedDataw1) {
     w1.style.backgroundColor = storedDataw1;
 }
+
+
+
