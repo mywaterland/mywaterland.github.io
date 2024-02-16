@@ -15,6 +15,8 @@ let curcolor = "#4d86bf";
 let curcover = "#84a4c5";
 let nocolor = "#1F1F1F";
 let bottle = document.querySelector(".bottle");
+let popup = document.querySelector(".popup");
+let close = document.querySelector(".close");
 document.body.style.backgroundColor = nocolor;
 document.body.style.transform = "scale(0)";
 
@@ -1413,6 +1415,98 @@ bottle.addEventListener('mouseout', function (event) {
         });
     }
 });
+bottle.addEventListener('mousedown', function (event) {
+    const popanim = popup.animate(
+        [
+            {
+                transform: "scale(0)"
+            },
+            {
+                transform: "scale(0.1)"
+            },
+            {
+                transform: "scale(0.2)"
+            },
+            {
+                transform: "scale(0.3)"
+            },
+            {
+                transform: "scale(0.4)"
+            },
+            {
+                transform: "scale(0.5)"
+            },
+            {
+                transform: "scale(0.6)"
+            },
+            {
+                transform: "scale(0.7)"
+            },
+            {
+                transform: "scale(0.8)"
+            },
+            {
+                transform: "scale(0.9)"
+            },
+            {
+                transform: "scale(1)"
+            },
+        ],
+        {
+            duration: 300,
+            easing: "linear",
+        }
+    );
+    popanim.addEventListener('finish', function (event) {
+        popup.style.transform = "scale(1)";
+    });
+});
+close.addEventListener('mousedown', function (event) {
+    const popclose = popup.animate(
+        [
+            {
+                transform: "scale(1)"
+            },
+            {
+                transform: "scale(0.9)"
+            },
+            {
+                transform: "scale(0.8)"
+            },
+            {
+                transform: "scale(0.7)"
+            },
+            {
+                transform: "scale(0.6)"
+            },
+            {
+                transform: "scale(0.5)"
+            },
+            {
+                transform: "scale(0.4)"
+            },
+            {
+                transform: "scale(0.3)"
+            },
+            {
+                transform: "scale(0.2)"
+            },
+            {
+                transform: "scale(0.1)"
+            },
+            {
+                transform: "scale(0)"
+            },
+        ],
+        {
+            duration: 300,
+            easing: "linear",
+        }
+    );
+    popclose.addEventListener('finish', function (event) {
+        popup.style.transform = "scale(0)";
+    });
+});
 
 var storedData = localStorage.getItem('userData');
 var storedDataw6 = localStorage.getItem('userDataw6');
@@ -1465,6 +1559,3 @@ if (storedDataw2) {
 if (storedDataw1) {
     w1.style.backgroundColor = storedDataw1;
 }
-
-
-
