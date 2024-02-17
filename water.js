@@ -98,7 +98,7 @@ function mesplus() {
     mes.style.backgroundColor = nocolor;
     mes.style.alignSelf = "flex-end";
     mes.style.borderRadius = "7px";
-    mes.style.border = "solid 2px #1F1F1F";
+    mes.style.border = "solid 2px";
     mes.style.color = nocolor;
     mes.style.fontSize = "17px";
     mes.style.textAlign = "center";
@@ -113,8 +113,8 @@ function mesplus() {
                 },
                 {
                     top: "95px",
-                    color: "#627a47",
-                    borderColor: "#627a47"
+                    color: "#8dea84",
+                    borderColor: "#8dea84"
                 },
                 {
                     top: "120px",
@@ -144,8 +144,8 @@ function mesplus() {
                 },
                 {
                     top: "155px",
-                    color: "#627a47",
-                    borderColor: "#627a47"
+                    color: "#8dea84",
+                    borderColor: "#8dea84"
                 },
                 {
                     top: "180px",
@@ -177,7 +177,7 @@ function mesminus() {
     mes.style.backgroundColor = nocolor;
     mes.style.alignSelf = "flex-end";
     mes.style.borderRadius = "7px";
-    mes.style.border = "solid 2px #1F1F1F";
+    mes.style.border = "solid 2px";
     mes.style.color = nocolor;
     mes.style.fontSize = "17px";
     mes.style.textAlign = "center";
@@ -192,8 +192,8 @@ function mesminus() {
                 },
                 {
                     top: "95px",
-                    color: "#9e4634",
-                    borderColor: "#9e4634"
+                    color: "#ee827c",
+                    borderColor: "#ee827c"
                 },
                 {
                     top: "120px",
@@ -223,8 +223,8 @@ function mesminus() {
                 },
                 {
                     top: "155px",
-                    color: "#9e4634",
-                    borderColor: "#9e4634"
+                    color: "#ee827c",
+                    borderColor: "#ee827c"
                 },
                 {
                     top: "180px",
