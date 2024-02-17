@@ -4,6 +4,7 @@ let w3 = document.querySelector(".w3");
 let w4 = document.querySelector(".w4");
 let w5 = document.querySelector(".w5");
 let w6 = document.querySelector(".w6");
+const waters = [w1, w2, w3, w4, w5, w6];
 let plus = document.querySelector(".plus");
 let parm = document.querySelector(".parm");
 let pmid = document.querySelector(".pmid");
@@ -11,14 +12,35 @@ let minus = document.querySelector(".minus");
 let txt = document.querySelector(".txt");
 let x;
 const head = document.querySelector(".head");
-let curcolor = "#4d86bf";
-let curcover = "#84a4c5";
-let nocolor = "#1F1F1F";
+let curcolor = "rgb(77, 134, 191)";
+let curcover = "rgb(132, 164, 197)";
+let nocolor = "rgb(31, 31, 31)";
 let bottle = document.querySelector(".bottle");
 let popup = document.querySelector(".popup");
 let close = document.querySelector(".close");
+let apply = document.querySelector(".apply");
+let wc1 = document.querySelector(".wc1");
+let wc2 = document.querySelector(".wc2");
+let wc3 = document.querySelector(".wc3");
+let wc4 = document.querySelector(".wc4");
+const waterc = [wc1, wc2, wc3, wc4];
+let gc1 = document.querySelector(".gc1");
+let gc2 = document.querySelector(".gc2");
+let gc3 = document.querySelector(".gc3");
+let gc4 = document.querySelector(".gc4");
+const glassc = [gc1, gc2, gc3, gc4];
+let bc1 = document.querySelector(".bc1");
+let bc2 = document.querySelector(".bc2");
+let bc3 = document.querySelector(".bc3");
+let bc4 = document.querySelector(".bc4");
+const backc = [bc1, bc2, bc3, bc4];
+let a1 = document.querySelector(".a1");
+let a2 = document.querySelector(".a2");
+let bot = document.querySelector(".bot");
 document.body.style.backgroundColor = nocolor;
 document.body.style.transform = "scale(0)";
+
+
 
 this.addEventListener('load', function (event) {
     const bodyanim = document.body.animate(
@@ -674,6 +696,18 @@ minus.addEventListener('mouseout', function (event) {
 });
 
 bottle.addEventListener('mouseover', function (event) {
+    if (curcolor === window.getComputedStyle(wc1).backgroundColor) {
+        curcover = "rgb(119, 167, 214)";
+    }
+    else if (curcolor === window.getComputedStyle(wc2).backgroundColor) {
+        curcover = "rgb(255, 229, 145)";
+    }
+    else if (curcolor === window.getComputedStyle(wc3).backgroundColor) {
+        curcover = "rgb(85, 63, 59)";
+    }
+    else if (curcolor === window.getComputedStyle(wc4).backgroundColor) {
+        curcover = "rgb(175, 175, 175)";
+    }
     if (x == 3000) {
         const w6over = w6.animate(
             [
@@ -1421,7 +1455,8 @@ var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navig
 if (isMobile) {
     // Mobile device
     bottle.addEventListener('touchstart', function (event) {
-        bottle.style.pointerEvents="none";
+        bottle.style.pointerEvents = "none";
+        bottle.style.touchAction = "none";
         const popanim = popup.animate(
             [
                 {
@@ -1459,13 +1494,13 @@ if (isMobile) {
                 },
             ],
             {
-                duration: 300,
+                duration: 200,
                 easing: "linear",
             }
         );
         popanim.addEventListener('finish', function (event) {
             popup.style.transform = "scale(1)";
-            bottle.style.pointerEvents="all";
+            bottle.style.pointerEvents = "all";
         });
     });
     close.addEventListener('touchstart', function (event) {
@@ -1506,7 +1541,7 @@ if (isMobile) {
                 },
             ],
             {
-                duration: 300,
+                duration: 200,
                 easing: "linear",
             }
         );
@@ -1517,6 +1552,7 @@ if (isMobile) {
 } else {
     // Desktop
     bottle.addEventListener('mousedown', function (event) {
+        bottle.style.pointerEvents = "none";
         const popanim = popup.animate(
             [
                 {
@@ -1554,12 +1590,13 @@ if (isMobile) {
                 },
             ],
             {
-                duration: 300,
+                duration: 200,
                 easing: "linear",
             }
         );
         popanim.addEventListener('finish', function (event) {
             popup.style.transform = "scale(1)";
+            bottle.style.pointerEvents = "all";
         });
     });
     close.addEventListener('mousedown', function (event) {
@@ -1600,7 +1637,7 @@ if (isMobile) {
                 },
             ],
             {
-                duration: 300,
+                duration: 200,
                 easing: "linear",
             }
         );
@@ -1611,6 +1648,333 @@ if (isMobile) {
 
 }
 
+apply.addEventListener('mousedown', function (event) {
+    waterc.forEach(item => {
+        if (item.style.border === "4px solid rgb(165, 165, 165)") {
+            waters.forEach(item2 => {
+                if (item2.style.backgroundColor === curcolor) {
+                    item2.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
+                }
+            });
+            curcolor = window.getComputedStyle(item).backgroundColor;
+
+            var inputCur = curcolor;
+            var inputW6 = w6.style.backgroundColor;
+            var inputW5 = w5.style.backgroundColor;
+            var inputW4 = w4.style.backgroundColor;
+            var inputW3 = w3.style.backgroundColor;
+            var inputW2 = w2.style.backgroundColor;
+            var inputW1 = w1.style.backgroundColor;
+            localStorage.setItem('userCur', inputCur);
+            localStorage.setItem('userDataw6', inputW6);
+            localStorage.setItem('userDataw5', inputW5);
+            localStorage.setItem('userDataw4', inputW4);
+            localStorage.setItem('userDataw3', inputW3);
+            localStorage.setItem('userDataw2', inputW2);
+            localStorage.setItem('userDataw1', inputW1);
+        }
+    });
+    glassc.forEach(item => {
+        if (item.style.border === "4px solid rgb(165, 165, 165)") {
+            a1.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
+            a2.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
+            bot.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
+
+            var inputA1 = a1.style.backgroundColor;
+            var inputA2 = a2.style.backgroundColor;
+            var inputBot = bot.style.backgroundColor;
+            localStorage.setItem('userA1', inputA1);
+            localStorage.setItem('userA2', inputA2);
+            localStorage.setItem('userBot', inputBot);
+        }
+    });
+    backc.forEach(item => {
+        if (item.style.border === "4px solid rgb(165, 165, 165)") {
+            document.body.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
+            nocolor = window.getComputedStyle(item).backgroundColor;
+            waters.forEach(item2 => {
+                if (item2.style.backgroundColor !== curcolor) {
+                    item2.style.backgroundColor = nocolor;
+                }
+            });
+
+            plus.style.borderColor = nocolor;
+            minus.style.borderColor = nocolor;
+            var inputBack = document.body.style.backgroundColor;
+            var inputNo = nocolor;
+            var inputW6 = w6.style.backgroundColor;
+            var inputW5 = w5.style.backgroundColor;
+            var inputW4 = w4.style.backgroundColor;
+            var inputW3 = w3.style.backgroundColor;
+            var inputW2 = w2.style.backgroundColor;
+            var inputW1 = w1.style.backgroundColor;
+            localStorage.setItem('userBack', inputBack);
+            localStorage.setItem('userNo', inputNo);
+            localStorage.setItem('userDataw6', inputW6);
+            localStorage.setItem('userDataw5', inputW5);
+            localStorage.setItem('userDataw4', inputW4);
+            localStorage.setItem('userDataw3', inputW3);
+            localStorage.setItem('userDataw2', inputW2);
+            localStorage.setItem('userDataw1', inputW1);
+        }
+    });
+});
+
+wc1.addEventListener('mousedown', function (event) {
+    if (wc1.style.border === "4px solid rgb(165, 165, 165)") {
+        wc1.style.border = "none";
+        wc1.style.width = "150px";
+        wc1.style.height = "90px";
+    }
+    else {
+        wc1.style.border = "4px solid rgb(165, 165, 165)";
+        wc1.style.width = "142px";
+        wc1.style.height = "82px";
+    }
+    wc2.style.border = "none";
+    wc2.style.width = "150px";
+    wc2.style.height = "90px";
+    wc3.style.border = "none";
+    wc3.style.width = "150px";
+    wc3.style.height = "90px";
+    wc4.style.border = "none";
+    wc4.style.width = "150px";
+    wc4.style.height = "90px";
+});
+wc2.addEventListener('mousedown', function (event) {
+    wc1.style.border = "none";
+    wc1.style.width = "150px";
+    wc1.style.height = "90px";
+    if (wc2.style.border === "4px solid rgb(165, 165, 165)") {
+        wc2.style.border = "none";
+        wc2.style.width = "150px";
+        wc2.style.height = "90px";
+    }
+    else {
+        wc2.style.border = "4px solid rgb(165, 165, 165)";
+        wc2.style.width = "142px";
+        wc2.style.height = "82px";
+    }
+    wc3.style.border = "none";
+    wc3.style.width = "150px";
+    wc3.style.height = "90px";
+    wc4.style.border = "none";
+    wc4.style.width = "150px";
+    wc4.style.height = "90px";
+});
+wc3.addEventListener('mousedown', function (event) {
+    wc1.style.border = "none";
+    wc1.style.width = "150px";
+    wc1.style.height = "90px";
+    wc2.style.border = "none";
+    wc2.style.width = "150px";
+    wc2.style.height = "90px";
+    if (wc3.style.border === "4px solid rgb(165, 165, 165)") {
+        wc3.style.border = "none";
+        wc3.style.width = "150px";
+        wc3.style.height = "90px";
+    }
+    else {
+        wc3.style.border = "4px solid rgb(165, 165, 165)";
+        wc3.style.width = "142px";
+        wc3.style.height = "82px";
+    }
+    wc4.style.border = "none";
+    wc4.style.width = "150px";
+    wc4.style.height = "90px";
+});
+wc4.addEventListener('mousedown', function (event) {
+    wc1.style.border = "none";
+    wc1.style.width = "150px";
+    wc1.style.height = "90px";
+    wc2.style.border = "none";
+    wc2.style.width = "150px";
+    wc2.style.height = "90px";
+    wc3.style.border = "none";
+    wc3.style.width = "150px";
+    wc3.style.height = "90px";
+    if (wc4.style.border === "4px solid rgb(165, 165, 165)") {
+        wc4.style.border = "none";
+        wc4.style.width = "150px";
+        wc4.style.height = "90px";
+    }
+    else {
+        wc4.style.border = "4px solid rgb(165, 165, 165)";
+        wc4.style.width = "142px";
+        wc4.style.height = "82px";
+    }
+});
+
+gc1.addEventListener('mousedown', function (event) {
+    if (gc1.style.border === "4px solid rgb(165, 165, 165)") {
+        gc1.style.border = "none";
+        gc1.style.width = "150px";
+        gc1.style.height = "90px";
+    }
+    else {
+        gc1.style.border = "4px solid rgb(165, 165, 165)";
+        gc1.style.width = "142px";
+        gc1.style.height = "82px";
+    }
+    gc2.style.border = "none";
+    gc2.style.width = "150px";
+    gc2.style.height = "90px";
+    gc3.style.border = "none";
+    gc3.style.width = "150px";
+    gc3.style.height = "90px";
+    gc4.style.border = "none";
+    gc4.style.width = "150px";
+    gc4.style.height = "90px";
+});
+gc2.addEventListener('mousedown', function (event) {
+    gc1.style.border = "none";
+    gc1.style.width = "150px";
+    gc1.style.height = "90px";
+    if (gc2.style.border === "4px solid rgb(165, 165, 165)") {
+        gc2.style.border = "none";
+        gc2.style.width = "150px";
+        gc2.style.height = "90px";
+    }
+    else {
+        gc2.style.border = "4px solid rgb(165, 165, 165)";
+        gc2.style.width = "142px";
+        gc2.style.height = "82px";
+    }
+    gc3.style.border = "none";
+    gc3.style.width = "150px";
+    gc3.style.height = "90px";
+    gc4.style.border = "none";
+    gc4.style.width = "150px";
+    gc4.style.height = "90px";
+});
+gc3.addEventListener('mousedown', function (event) {
+    gc1.style.border = "none";
+    gc1.style.width = "150px";
+    gc1.style.height = "90px";
+    gc2.style.border = "none";
+    gc2.style.width = "150px";
+    gc2.style.height = "90px";
+    if (gc3.style.border === "4px solid rgb(165, 165, 165)") {
+        gc3.style.border = "none";
+        gc3.style.width = "150px";
+        gc3.style.height = "90px";
+    }
+    else {
+        gc3.style.border = "4px solid rgb(165, 165, 165)";
+        gc3.style.width = "142px";
+        gc3.style.height = "82px";
+    }
+    gc4.style.border = "none";
+    gc4.style.width = "150px";
+    gc4.style.height = "90px";
+});
+gc4.addEventListener('mousedown', function (event) {
+    gc1.style.border = "none";
+    gc1.style.width = "150px";
+    gc1.style.height = "90px";
+    gc2.style.border = "none";
+    gc2.style.width = "150px";
+    gc2.style.height = "90px";
+    gc3.style.border = "none";
+    gc3.style.width = "150px";
+    gc3.style.height = "90px";
+    if (gc4.style.border === "4px solid rgb(165, 165, 165)") {
+        gc4.style.border = "none";
+        gc4.style.width = "150px";
+        gc4.style.height = "90px";
+    }
+    else {
+        gc4.style.border = "4px solid rgb(165, 165, 165)";
+        gc4.style.width = "142px";
+        gc4.style.height = "82px";
+    }
+});
+
+bc1.addEventListener('mousedown', function (event) {
+    if (bc1.style.border === "4px solid rgb(165, 165, 165)") {
+        bc1.style.border = "none";
+        bc1.style.width = "150px";
+        bc1.style.height = "90px";
+    }
+    else {
+        bc1.style.border = "4px solid rgb(165, 165, 165)";
+        bc1.style.width = "142px";
+        bc1.style.height = "82px";
+    }
+    bc2.style.border = "none";
+    bc2.style.width = "150px";
+    bc2.style.height = "90px";
+    bc3.style.border = "none";
+    bc3.style.width = "150px";
+    bc3.style.height = "90px";
+    bc4.style.border = "none";
+    bc4.style.width = "150px";
+    bc4.style.height = "90px";
+});
+bc2.addEventListener('mousedown', function (event) {
+    bc1.style.border = "none";
+    bc1.style.width = "150px";
+    bc1.style.height = "90px";
+    if (bc2.style.border === "4px solid rgb(165, 165, 165)") {
+        bc2.style.border = "none";
+        bc2.style.width = "150px";
+        bc2.style.height = "90px";
+    }
+    else {
+        bc2.style.border = "4px solid rgb(165, 165, 165)";
+        bc2.style.width = "142px";
+        bc2.style.height = "82px";
+    }
+    bc3.style.border = "none";
+    bc3.style.width = "150px";
+    bc3.style.height = "90px";
+    bc4.style.border = "none";
+    bc4.style.width = "150px";
+    bc4.style.height = "90px";
+});
+bc3.addEventListener('mousedown', function (event) {
+    bc1.style.border = "none";
+    bc1.style.width = "150px";
+    bc1.style.height = "90px";
+    bc2.style.border = "none";
+    bc2.style.width = "150px";
+    bc2.style.height = "90px";
+    if (bc3.style.border === "4px solid rgb(165, 165, 165)") {
+        bc3.style.border = "none";
+        bc3.style.width = "150px";
+        bc3.style.height = "90px";
+    }
+    else {
+        bc3.style.border = "4px solid rgb(165, 165, 165)";
+        bc3.style.width = "142px";
+        bc3.style.height = "82px";
+    }
+    bc4.style.border = "none";
+    bc4.style.width = "150px";
+    bc4.style.height = "90px";
+});
+bc4.addEventListener('mousedown', function (event) {
+    bc1.style.border = "none";
+    bc1.style.width = "150px";
+    bc1.style.height = "90px";
+    bc2.style.border = "none";
+    bc2.style.width = "150px";
+    bc2.style.height = "90px";
+    bc3.style.border = "none";
+    bc3.style.width = "150px";
+    bc3.style.height = "90px";
+    if (bc4.style.border === "4px solid rgb(165, 165, 165)") {
+        bc4.style.border = "none";
+        bc4.style.width = "150px";
+        bc4.style.height = "90px";
+    }
+    else {
+        bc4.style.border = "4px solid rgb(165, 165, 165)";
+        bc4.style.width = "142px";
+        bc4.style.height = "82px";
+    }
+});
+
 
 
 var storedData = localStorage.getItem('userData');
@@ -1620,7 +1984,12 @@ var storedDataw4 = localStorage.getItem('userDataw4');
 var storedDataw3 = localStorage.getItem('userDataw3');
 var storedDataw2 = localStorage.getItem('userDataw2');
 var storedDataw1 = localStorage.getItem('userDataw1');
-
+var storedDatacur = localStorage.getItem('userCur');
+var storedDataA1 = localStorage.getItem('userA1');
+var storedDataA2 = localStorage.getItem('userA2');
+var storedDataBot = localStorage.getItem('userBot');
+var storedDataBack = localStorage.getItem('userBack');
+var storedDataNo = localStorage.getItem('userNo');
 
 if (storedData) {
     if (storedData == "0") {
@@ -1664,3 +2033,23 @@ if (storedDataw2) {
 if (storedDataw1) {
     w1.style.backgroundColor = storedDataw1;
 }
+if (storedDatacur) {
+    curcolor = storedDatacur;
+}
+if (storedDataA1) {
+    a1.style.backgroundColor = storedDataA1;
+}
+if (storedDataA2) {
+    a2.style.backgroundColor = storedDataA1;
+}
+if (storedDataBot) {
+    bot.style.backgroundColor = storedDataA1;
+}
+if (storedDataBack) {
+    document.body.style.backgroundColor = storedDataBack;
+}
+if (storedDataNo) {
+    nocolor = storedDataNo;
+}
+plus.style.borderColor = nocolor;
+minus.style.borderColor = nocolor;
