@@ -1421,6 +1421,7 @@ var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navig
 if (isMobile) {
     // Mobile device
     bottle.addEventListener('touchstart', function (event) {
+        bottle.style.pointerEvents="none";
         const popanim = popup.animate(
             [
                 {
@@ -1464,6 +1465,7 @@ if (isMobile) {
         );
         popanim.addEventListener('finish', function (event) {
             popup.style.transform = "scale(1)";
+            bottle.style.pointerEvents="all";
         });
     });
     close.addEventListener('touchstart', function (event) {
