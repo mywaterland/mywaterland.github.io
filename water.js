@@ -1415,98 +1415,201 @@ bottle.addEventListener('mouseout', function (event) {
         });
     }
 });
-bottle.addEventListener('mousedown', function (event) {
-    const popanim = popup.animate(
-        [
+
+var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
+if (isMobile) {
+    // Mobile device
+    bottle.addEventListener('touchstart', function (event) {
+        const popanim = popup.animate(
+            [
+                {
+                    transform: "scale(0)"
+                },
+                {
+                    transform: "scale(0.1)"
+                },
+                {
+                    transform: "scale(0.2)"
+                },
+                {
+                    transform: "scale(0.3)"
+                },
+                {
+                    transform: "scale(0.4)"
+                },
+                {
+                    transform: "scale(0.5)"
+                },
+                {
+                    transform: "scale(0.6)"
+                },
+                {
+                    transform: "scale(0.7)"
+                },
+                {
+                    transform: "scale(0.8)"
+                },
+                {
+                    transform: "scale(0.9)"
+                },
+                {
+                    transform: "scale(1)"
+                },
+            ],
             {
-                transform: "scale(0)"
-            },
-            {
-                transform: "scale(0.1)"
-            },
-            {
-                transform: "scale(0.2)"
-            },
-            {
-                transform: "scale(0.3)"
-            },
-            {
-                transform: "scale(0.4)"
-            },
-            {
-                transform: "scale(0.5)"
-            },
-            {
-                transform: "scale(0.6)"
-            },
-            {
-                transform: "scale(0.7)"
-            },
-            {
-                transform: "scale(0.8)"
-            },
-            {
-                transform: "scale(0.9)"
-            },
-            {
-                transform: "scale(1)"
-            },
-        ],
-        {
-            duration: 300,
-            easing: "linear",
-        }
-    );
-    popanim.addEventListener('finish', function (event) {
-        popup.style.transform = "scale(1)";
+                duration: 300,
+                easing: "linear",
+            }
+        );
+        popanim.addEventListener('finish', function (event) {
+            popup.style.transform = "scale(1)";
+        });
     });
-});
-close.addEventListener('mousedown', function (event) {
-    const popclose = popup.animate(
-        [
+    close.addEventListener('touchstart', function (event) {
+        const popclose = popup.animate(
+            [
+                {
+                    transform: "scale(1)"
+                },
+                {
+                    transform: "scale(0.9)"
+                },
+                {
+                    transform: "scale(0.8)"
+                },
+                {
+                    transform: "scale(0.7)"
+                },
+                {
+                    transform: "scale(0.6)"
+                },
+                {
+                    transform: "scale(0.5)"
+                },
+                {
+                    transform: "scale(0.4)"
+                },
+                {
+                    transform: "scale(0.3)"
+                },
+                {
+                    transform: "scale(0.2)"
+                },
+                {
+                    transform: "scale(0.1)"
+                },
+                {
+                    transform: "scale(0)"
+                },
+            ],
             {
-                transform: "scale(1)"
-            },
-            {
-                transform: "scale(0.9)"
-            },
-            {
-                transform: "scale(0.8)"
-            },
-            {
-                transform: "scale(0.7)"
-            },
-            {
-                transform: "scale(0.6)"
-            },
-            {
-                transform: "scale(0.5)"
-            },
-            {
-                transform: "scale(0.4)"
-            },
-            {
-                transform: "scale(0.3)"
-            },
-            {
-                transform: "scale(0.2)"
-            },
-            {
-                transform: "scale(0.1)"
-            },
-            {
-                transform: "scale(0)"
-            },
-        ],
-        {
-            duration: 300,
-            easing: "linear",
-        }
-    );
-    popclose.addEventListener('finish', function (event) {
-        popup.style.transform = "scale(0)";
+                duration: 300,
+                easing: "linear",
+            }
+        );
+        popclose.addEventListener('finish', function (event) {
+            popup.style.transform = "scale(0)";
+        });
     });
-});
+} else {
+    // Desktop
+    bottle.addEventListener('mousedown', function (event) {
+        const popanim = popup.animate(
+            [
+                {
+                    transform: "scale(0)"
+                },
+                {
+                    transform: "scale(0.1)"
+                },
+                {
+                    transform: "scale(0.2)"
+                },
+                {
+                    transform: "scale(0.3)"
+                },
+                {
+                    transform: "scale(0.4)"
+                },
+                {
+                    transform: "scale(0.5)"
+                },
+                {
+                    transform: "scale(0.6)"
+                },
+                {
+                    transform: "scale(0.7)"
+                },
+                {
+                    transform: "scale(0.8)"
+                },
+                {
+                    transform: "scale(0.9)"
+                },
+                {
+                    transform: "scale(1)"
+                },
+            ],
+            {
+                duration: 300,
+                easing: "linear",
+            }
+        );
+        popanim.addEventListener('finish', function (event) {
+            popup.style.transform = "scale(1)";
+        });
+    });
+    close.addEventListener('mousedown', function (event) {
+        const popclose = popup.animate(
+            [
+                {
+                    transform: "scale(1)"
+                },
+                {
+                    transform: "scale(0.9)"
+                },
+                {
+                    transform: "scale(0.8)"
+                },
+                {
+                    transform: "scale(0.7)"
+                },
+                {
+                    transform: "scale(0.6)"
+                },
+                {
+                    transform: "scale(0.5)"
+                },
+                {
+                    transform: "scale(0.4)"
+                },
+                {
+                    transform: "scale(0.3)"
+                },
+                {
+                    transform: "scale(0.2)"
+                },
+                {
+                    transform: "scale(0.1)"
+                },
+                {
+                    transform: "scale(0)"
+                },
+            ],
+            {
+                duration: 300,
+                easing: "linear",
+            }
+        );
+        popclose.addEventListener('finish', function (event) {
+            popup.style.transform = "scale(0)";
+        });
+    });
+
+}
+
+
 
 var storedData = localStorage.getItem('userData');
 var storedDataw6 = localStorage.getItem('userDataw6');
