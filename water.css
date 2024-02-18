@@ -134,7 +134,7 @@ body {
     position: absolute;
     text-align: center;
     font-size: 3em;
-    top: 35%;
+    top: 40%;
     pointer-events: none;
 }
 
@@ -174,7 +174,7 @@ body {
     padding-bottom: 20px;
     color: #c5d3e1;
     transform: scale(0);
-
+    visibility: hidden;
 }
 
 .color {
@@ -275,7 +275,29 @@ body {
     cursor: pointer;
 }
 
+.link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 1vh;
+    left: 85vw;
+    font-size: 20px;
+    color: #4CAF50;
+    visibility: hidden;
+}
 
+.clock{
+    font-size: 50px;
+    position: relative;
+    top: -130px;
+    color: #dd7f7fbb;
+    border: solid 2px #dd7f7fbb;
+    border-radius: 10px;
+    padding: 10px;
+}
 
 @media only screen and (max-width: 1238px) {
     .color {
