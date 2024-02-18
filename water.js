@@ -37,11 +37,10 @@ const backc = [bc1, bc2, bc3, bc4];
 let a1 = document.querySelector(".a1");
 let a2 = document.querySelector(".a2");
 let bot = document.querySelector(".bot");
+let link = document.querySelector(".link");
+var clock = document.querySelector(".clock");
 document.body.style.backgroundColor = nocolor;
 document.body.style.transform = "scale(0)";
-
-
-
 
 this.addEventListener('load', function (event) {
     const bodyanim = document.body.animate(
@@ -90,613 +89,7 @@ this.addEventListener('load', function (event) {
     });
 });
 
-function mesplus() {
-    const mes = document.createElement("div");
-    head.prepend(mes);
-    mes.style.width = "50px";
-    mes.style.height = "20px";
-    mes.style.backgroundColor = nocolor;
-    mes.style.alignSelf = "flex-end";
-    mes.style.borderRadius = "7px";
-    mes.style.border = "solid 2px";
-    mes.style.color = nocolor;
-    mes.style.fontSize = "17px";
-    mes.style.textAlign = "center";
-    mes.style.position = "absolute";
-    mes.textContent = "+500";
-    if (document.body.clientHeight <= 600) {
-        mes.style.left = "790px";
-        const mesanim = mes.animate(
-            [
-                {
-                    top: "70px"
-                },
-                {
-                    top: "95px",
-                    color: "#8dea84",
-                    borderColor: "#8dea84"
-                },
-                {
-                    top: "120px",
-                    color: nocolor,
-                    borderColor: nocolor
-                },
-            ],
-            {
-                duration: 700,
-                easing: "linear",
-            }
-        );
-
-        mesanim.addEventListener('finish', function (event) {
-            mes.remove();
-        });
-        mesanim.addEventListener('cancel', function (event) {
-            mes.remove();
-        });
-    }
-    else {
-        mes.style.left = "";
-        const mesanim = mes.animate(
-            [
-                {
-                    top: "130px"
-                },
-                {
-                    top: "155px",
-                    color: "#8dea84",
-                    borderColor: "#8dea84"
-                },
-                {
-                    top: "180px",
-                    color: nocolor,
-                    borderColor: nocolor
-                },
-            ],
-            {
-                duration: 700,
-                easing: "linear",
-            }
-        );
-
-        mesanim.addEventListener('finish', function (event) {
-            mes.remove();
-        });
-        mesanim.addEventListener('cancel', function (event) {
-            mes.remove();
-        });
-    }
-
-}
-
-function mesminus() {
-    const mes = document.createElement("div");
-    head.prepend(mes);
-    mes.style.width = "50px";
-    mes.style.height = "20px";
-    mes.style.backgroundColor = nocolor;
-    mes.style.alignSelf = "flex-end";
-    mes.style.borderRadius = "7px";
-    mes.style.border = "solid 2px";
-    mes.style.color = nocolor;
-    mes.style.fontSize = "17px";
-    mes.style.textAlign = "center";
-    mes.style.position = "absolute";
-    mes.textContent = "-500";
-    if (document.body.clientHeight <= 600) {
-        mes.style.left = "790px";
-        const mesanim = mes.animate(
-            [
-                {
-                    top: "70px"
-                },
-                {
-                    top: "95px",
-                    color: "#ee827c",
-                    borderColor: "#ee827c"
-                },
-                {
-                    top: "120px",
-                    color: nocolor,
-                    borderColor: nocolor
-                },
-            ],
-            {
-                duration: 700,
-                easing: "linear",
-            }
-        );
-        mesanim.addEventListener('finish', function (event) {
-            mes.remove();
-        });
-        mesanim.addEventListener('cancel', function (event) {
-            mes.remove();
-        });
-    }
-
-    else {
-        mes.style.left = "";
-        const mesanim = mes.animate(
-            [
-                {
-                    top: "130px"
-                },
-                {
-                    top: "155px",
-                    color: "#ee827c",
-                    borderColor: "#ee827c"
-                },
-                {
-                    top: "180px",
-                    color: nocolor,
-                    borderColor: nocolor
-                },
-            ],
-            {
-                duration: 700,
-                easing: "linear",
-            }
-        );
-        mesanim.addEventListener('finish', function (event) {
-            mes.remove();
-        });
-        mesanim.addEventListener('cancel', function (event) {
-            mes.remove();
-        });
-    }
-
-}
-
-plus.addEventListener('mousedown', function (event) {
-    if (x == 3000) {
-        x = 3000;
-        w1.style.backgroundColor = curcolor;
-    }
-    else if (x == 2500) {
-        x += 500;
-        w1.style.height = "0px";
-        w1.style.backgroundColor = curcolor;
-        const w1a = w1.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w1a.addEventListener('finish', function (event) {
-            w1.style.height = "50px";
-            w1.style.backgroundColor = curcolor;
-        });
-
-        w1a.addEventListener('cancel', function (event) {
-            w1.style.height = "50px";
-            w1.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    else if (x == 2000) {
-        x += 500;
-        w2.style.height = "0px";
-        w2.style.backgroundColor = curcolor;
-        const w2a = w2.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w2a.addEventListener('finish', function (event) {
-            w2.style.height = "50px";
-            w2.style.backgroundColor = curcolor;
-        });
-        w2a.addEventListener('cancel', function (event) {
-            w2.style.height = "50px";
-            w2.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    else if (x == 1500) {
-        x += 500;
-        w3.style.height = "0px";
-        w3.style.backgroundColor = curcolor;
-        const w3a = w3.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w3a.addEventListener('finish', function (event) {
-            w3.style.height = "50px";
-            w3.style.backgroundColor = curcolor;
-        });
-        w3a.addEventListener('cancel', function (event) {
-            w3.style.height = "50px";
-            w3.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    else if (x == 1000) {
-        x += 500;
-        w4.style.height = "0px";
-        w4.style.backgroundColor = curcolor;
-        const w4a = w4.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w4a.addEventListener('finish', function (event) {
-            w4.style.height = "50px";
-            w4.style.backgroundColor = curcolor;
-        });
-        w4a.addEventListener('cancel', function (event) {
-            w4.style.height = "50px";
-            w4.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    else if (x == 500) {
-        x += 500;
-        w5.style.height = "0px";
-        w5.style.backgroundColor = curcolor;
-        const w5a = w5.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w5a.addEventListener('finish', function (event) {
-            w5.style.height = "50px";
-            w5.style.backgroundColor = curcolor;
-        });
-        w5a.addEventListener('cancel', function (event) {
-            w5.style.height = "50px";
-            w5.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    else {
-        x = 0;
-        x += 500;
-        w6.style.height = "0px";
-        w6.style.backgroundColor = curcolor;
-        const w6a = w6.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w6a.addEventListener('finish', function (event) {
-            w6.style.height = "50px";
-            w6.style.backgroundColor = curcolor;
-        });
-        w6a.addEventListener('cancel', function (event) {
-            w6.style.height = "50px";
-            w6.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    txt.textContent = x + "ML";
-    var inputData = x;
-    var inputW6 = w6.style.backgroundColor;
-    var inputW5 = w5.style.backgroundColor;
-    var inputW4 = w4.style.backgroundColor;
-    var inputW3 = w3.style.backgroundColor;
-    var inputW2 = w2.style.backgroundColor;
-    var inputW1 = w1.style.backgroundColor;
-    localStorage.setItem('userData', inputData);
-    localStorage.setItem('userDataw6', inputW6);
-    localStorage.setItem('userDataw5', inputW5);
-    localStorage.setItem('userDataw4', inputW4);
-    localStorage.setItem('userDataw3', inputW3);
-    localStorage.setItem('userDataw2', inputW2);
-    localStorage.setItem('userDataw1', inputW1);
-
-});
-
-minus.addEventListener('mousedown', function (event) {
-    if (x == 500) {
-        x -= 500;
-        const w6a2 = w6.animate(
-            [
-                {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w6a2.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = nocolor;
-            var inputW6 = w6.style.backgroundColor;
-            localStorage.setItem('userDataw6', inputW6);
-        });
-        w6a2.addEventListener('cancel', function (event) {
-            w6.style.backgroundColor = nocolor;
-            var inputW6 = w6.style.backgroundColor;
-            localStorage.setItem('userDataw6', inputW6);
-        });
-        mesminus();
-    }
-    else if (x == 1000) {
-        x -= 500;
-        const w5a2 = w5.animate(
-            [
-                {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w5a2.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = nocolor;
-            var inputW5 = w5.style.backgroundColor;
-            localStorage.setItem('userDataw5', inputW5);
-        });
-        w5a2.addEventListener('cancel', function (event) {
-            w5.style.backgroundColor = nocolor;
-            var inputW5 = w5.style.backgroundColor;
-            localStorage.setItem('userDataw5', inputW5);
-        });
-        mesminus();
-    }
-    else if (x == 1500) {
-        x -= 500;
-        const w4a2 = w4.animate(
-            [
-                {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w4a2.addEventListener('finish', function (event) {
-            w4.style.backgroundColor = nocolor;
-            var inputW4 = w4.style.backgroundColor;
-            localStorage.setItem('userDataw4', inputW4);
-        });
-        w4a2.addEventListener('cancel', function (event) {
-            w4.style.backgroundColor = nocolor;
-            var inputW4 = w4.style.backgroundColor;
-            localStorage.setItem('userDataw4', inputW4);
-        });
-        mesminus();
-    }
-    else if (x == 2000) {
-        x -= 500;
-        const w3a2 = w3.animate(
-            [
-                {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w3a2.addEventListener('finish', function (event) {
-            w3.style.backgroundColor = nocolor;
-            var inputW3 = w3.style.backgroundColor;
-            localStorage.setItem('userDataw3', inputW3);
-        });
-        w3a2.addEventListener('cancel', function (event) {
-            w3.style.backgroundColor = nocolor;
-            var inputW3 = w3.style.backgroundColor;
-            localStorage.setItem('userDataw3', inputW3);
-        });
-        mesminus();
-    }
-    else if (x == 2500) {
-        x -= 500;
-        const w2a2 = w2.animate(
-            [
-                {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w2a2.addEventListener('finish', function (event) {
-            w2.style.backgroundColor = nocolor;
-            var inputW2 = w2.style.backgroundColor;
-            localStorage.setItem('userDataw2', inputW2);
-        });
-        w2a2.addEventListener('cancel', function (event) {
-            w2.style.backgroundColor = nocolor;
-            var inputW2 = w2.style.backgroundColor;
-            localStorage.setItem('userDataw2', inputW2);
-        });
-        mesminus();
-    }
-    else if (x == 3000) {
-        x -= 500;
-        const w1a2 = w1.animate(
-            [
-                {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w1a2.addEventListener('finish', function (event) {
-            w1.style.backgroundColor = nocolor;
-            var inputW1 = w1.style.backgroundColor;
-            localStorage.setItem('userDataw1', inputW1);
-        });
-        w1a2.addEventListener('cancel', function (event) {
-            w1.style.backgroundColor = nocolor;
-            var inputW1 = w1.style.backgroundColor;
-            localStorage.setItem('userDataw1', inputW1);
-        });
-        mesminus();
-    }
-    else {
-        x = 0;
-        w6.style.backgroundColor = nocolor;
-    }
-    txt.textContent = x + "ML";
-    var inputData = x;
-    localStorage.setItem('userData', inputData);
-});
-
-plus.addEventListener('mouseover', function (event) {
-    const plusanims = plus.animate(
-        [
-            {
-                borderColor: nocolor
-            },
-            {
-                borderColor: "#dd7f7fbb"
-            },
-        ],
-        {
-            duration: 300,
-            easing: "linear",
-        }
-    );
-    plusanims.addEventListener('finish', function (event) {
-        plus.style.borderColor = "#dd7f7fbb";
-    });
-});
-plus.addEventListener('mouseout', function (event) {
-    const plusanims = plus.animate(
-        [
-            {
-                borderColor: "#dd7f7fbb"
-            },
-            {
-                borderColor: nocolor
-            },
-        ],
-        {
-            duration: 300,
-            easing: "linear",
-        }
-    );
-    plusanims.addEventListener('finish', function (event) {
-        plus.style.borderColor = nocolor;
-    });
-});
-
-minus.addEventListener('mouseover', function (event) {
-    const minusanims = minus.animate(
-        [
-            {
-                borderColor: nocolor
-            },
-            {
-                borderColor: "#34495e"
-            },
-        ],
-        {
-            duration: 300,
-            easing: "linear",
-        }
-    );
-    minusanims.addEventListener('finish', function (event) {
-        minus.style.borderColor = "#34495e";
-    });
-});
-minus.addEventListener('mouseout', function (event) {
-    const minusanims = minus.animate(
-        [
-            {
-                borderColor: "#34495e"
-            },
-            {
-                borderColor: nocolor
-            },
-        ],
-        {
-            duration: 300,
-            easing: "linear",
-        }
-    );
-    minusanims.addEventListener('finish', function (event) {
-        minus.style.borderColor = nocolor;
-    });
-});
-
-bottle.addEventListener('mouseover', function (event) {
+function bottleover() {
     if (curcolor === window.getComputedStyle(wc1).backgroundColor) {
         curcover = "rgb(119, 167, 214)";
     }
@@ -1078,8 +471,9 @@ bottle.addEventListener('mouseover', function (event) {
             w6.style.backgroundColor = curcover;
         });
     }
-});
-bottle.addEventListener('mouseout', function (event) {
+}
+
+function bottleout() {
     if (x == 3000) {
         const w6out = w6.animate(
             [
@@ -1449,15 +843,626 @@ bottle.addEventListener('mouseout', function (event) {
             w6.style.backgroundColor = curcolor;
         });
     }
+}
+
+function mesplus() {
+    const mes = document.createElement("div");
+    head.prepend(mes);
+    mes.style.width = "50px";
+    mes.style.height = "20px";
+    mes.style.backgroundColor = nocolor;
+    mes.style.alignSelf = "flex-end";
+    mes.style.borderRadius = "7px";
+    mes.style.border = "solid 2px";
+    mes.style.color = nocolor;
+    mes.style.fontSize = "17px";
+    mes.style.textAlign = "center";
+    mes.style.position = "absolute";
+    mes.textContent = "+500";
+    if (document.body.clientHeight <= 600) {
+        mes.style.left = "790px";
+        const mesanim = mes.animate(
+            [
+                {
+                    top: "70px"
+                },
+                {
+                    top: "95px",
+                    color: "#8dea84",
+                    borderColor: "#8dea84"
+                },
+                {
+                    top: "120px",
+                    color: nocolor,
+                    borderColor: nocolor
+                },
+            ],
+            {
+                duration: 700,
+                easing: "linear",
+            }
+        );
+
+        mesanim.addEventListener('finish', function (event) {
+            mes.remove();
+        });
+        mesanim.addEventListener('cancel', function (event) {
+            mes.remove();
+        });
+    }
+    else {
+        mes.style.left = "";
+        const mesanim = mes.animate(
+            [
+                {
+                    top: "130px"
+                },
+                {
+                    top: "155px",
+                    color: "#8dea84",
+                    borderColor: "#8dea84"
+                },
+                {
+                    top: "180px",
+                    color: nocolor,
+                    borderColor: nocolor
+                },
+            ],
+            {
+                duration: 700,
+                easing: "linear",
+            }
+        );
+
+        mesanim.addEventListener('finish', function (event) {
+            mes.remove();
+        });
+        mesanim.addEventListener('cancel', function (event) {
+            mes.remove();
+        });
+    }
+
+}
+
+function mesminus() {
+    const mes = document.createElement("div");
+    head.prepend(mes);
+    mes.style.width = "50px";
+    mes.style.height = "20px";
+    mes.style.backgroundColor = nocolor;
+    mes.style.alignSelf = "flex-end";
+    mes.style.borderRadius = "7px";
+    mes.style.border = "solid 2px";
+    mes.style.color = nocolor;
+    mes.style.fontSize = "17px";
+    mes.style.textAlign = "center";
+    mes.style.position = "absolute";
+    mes.textContent = "-500";
+    if (document.body.clientHeight <= 600) {
+        mes.style.left = "790px";
+        const mesanim = mes.animate(
+            [
+                {
+                    top: "70px"
+                },
+                {
+                    top: "95px",
+                    color: "#ee827c",
+                    borderColor: "#ee827c"
+                },
+                {
+                    top: "120px",
+                    color: nocolor,
+                    borderColor: nocolor
+                },
+            ],
+            {
+                duration: 700,
+                easing: "linear",
+            }
+        );
+        mesanim.addEventListener('finish', function (event) {
+            mes.remove();
+        });
+        mesanim.addEventListener('cancel', function (event) {
+            mes.remove();
+        });
+    }
+
+    else {
+        mes.style.left = "";
+        const mesanim = mes.animate(
+            [
+                {
+                    top: "130px"
+                },
+                {
+                    top: "155px",
+                    color: "#ee827c",
+                    borderColor: "#ee827c"
+                },
+                {
+                    top: "180px",
+                    color: nocolor,
+                    borderColor: nocolor
+                },
+            ],
+            {
+                duration: 700,
+                easing: "linear",
+            }
+        );
+        mesanim.addEventListener('finish', function (event) {
+            mes.remove();
+        });
+        mesanim.addEventListener('cancel', function (event) {
+            mes.remove();
+        });
+    }
+
+}
+
+function plusover() {
+    const plusanims = plus.animate(
+        [
+            {
+                borderColor: nocolor
+            },
+            {
+                borderColor: "#dd7f7fbb"
+            },
+        ],
+        {
+            duration: 300,
+            easing: "linear",
+        }
+    );
+    plusanims.addEventListener('finish', function (event) {
+        plus.style.borderColor = "#dd7f7fbb";
+    });
+}
+function plusout() {
+    const plusanims = plus.animate(
+        [
+            {
+                borderColor: "#dd7f7fbb"
+            },
+            {
+                borderColor: nocolor
+            },
+        ],
+        {
+            duration: 300,
+            easing: "linear",
+        }
+    );
+    plusanims.addEventListener('finish', function (event) {
+        plus.style.borderColor = nocolor;
+    });
+}
+
+function minusover() {
+    const minusanims = minus.animate(
+        [
+            {
+                borderColor: nocolor
+            },
+            {
+                borderColor: "#34495e"
+            },
+        ],
+        {
+            duration: 300,
+            easing: "linear",
+        }
+    );
+    minusanims.addEventListener('finish', function (event) {
+        minus.style.borderColor = "#34495e";
+    });
+}
+function minusout() {
+    const minusanims = minus.animate(
+        [
+            {
+                borderColor: "#34495e"
+            },
+            {
+                borderColor: nocolor
+            },
+        ],
+        {
+            duration: 300,
+            easing: "linear",
+        }
+    );
+    minusanims.addEventListener('finish', function (event) {
+        minus.style.borderColor = nocolor;
+    });
+}
+
+plus.addEventListener('mousedown', function (event) {
+    if (x == 3000) {
+        x = 3000;
+        w1.style.backgroundColor = curcolor;
+    }
+    else if (x == 2500) {
+        x += 500;
+        w1.style.height = "0px";
+        w1.style.backgroundColor = curcolor;
+        const w1a = w1.animate(
+            [
+                {
+                    height: "0px"
+                },
+                {
+                    height: "50px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w1a.addEventListener('finish', function (event) {
+            w1.style.height = "50px";
+            w1.style.backgroundColor = curcolor;
+        });
+
+        w1a.addEventListener('cancel', function (event) {
+            w1.style.height = "50px";
+            w1.style.backgroundColor = curcolor;
+        });
+        mesplus();
+    }
+    else if (x == 2000) {
+        x += 500;
+        w2.style.height = "0px";
+        w2.style.backgroundColor = curcolor;
+        const w2a = w2.animate(
+            [
+                {
+                    height: "0px"
+                },
+                {
+                    height: "50px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w2a.addEventListener('finish', function (event) {
+            w2.style.height = "50px";
+            w2.style.backgroundColor = curcolor;
+        });
+        w2a.addEventListener('cancel', function (event) {
+            w2.style.height = "50px";
+            w2.style.backgroundColor = curcolor;
+        });
+        mesplus();
+    }
+    else if (x == 1500) {
+        x += 500;
+        w3.style.height = "0px";
+        w3.style.backgroundColor = curcolor;
+        const w3a = w3.animate(
+            [
+                {
+                    height: "0px"
+                },
+                {
+                    height: "50px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w3a.addEventListener('finish', function (event) {
+            w3.style.height = "50px";
+            w3.style.backgroundColor = curcolor;
+        });
+        w3a.addEventListener('cancel', function (event) {
+            w3.style.height = "50px";
+            w3.style.backgroundColor = curcolor;
+        });
+        mesplus();
+    }
+    else if (x == 1000) {
+        x += 500;
+        w4.style.height = "0px";
+        w4.style.backgroundColor = curcolor;
+        const w4a = w4.animate(
+            [
+                {
+                    height: "0px"
+                },
+                {
+                    height: "50px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w4a.addEventListener('finish', function (event) {
+            w4.style.height = "50px";
+            w4.style.backgroundColor = curcolor;
+        });
+        w4a.addEventListener('cancel', function (event) {
+            w4.style.height = "50px";
+            w4.style.backgroundColor = curcolor;
+        });
+        mesplus();
+    }
+    else if (x == 500) {
+        x += 500;
+        w5.style.height = "0px";
+        w5.style.backgroundColor = curcolor;
+        const w5a = w5.animate(
+            [
+                {
+                    height: "0px"
+                },
+                {
+                    height: "50px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w5a.addEventListener('finish', function (event) {
+            w5.style.height = "50px";
+            w5.style.backgroundColor = curcolor;
+        });
+        w5a.addEventListener('cancel', function (event) {
+            w5.style.height = "50px";
+            w5.style.backgroundColor = curcolor;
+        });
+        mesplus();
+    }
+    else {
+        x = 0;
+        x += 500;
+        w6.style.height = "0px";
+        w6.style.backgroundColor = curcolor;
+        const w6a = w6.animate(
+            [
+                {
+                    height: "0px"
+                },
+                {
+                    height: "50px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w6a.addEventListener('finish', function (event) {
+            w6.style.height = "50px";
+            w6.style.backgroundColor = curcolor;
+        });
+        w6a.addEventListener('cancel', function (event) {
+            w6.style.height = "50px";
+            w6.style.backgroundColor = curcolor;
+        });
+        mesplus();
+    }
+    txt.textContent = x + "ML";
+    var inputData = x;
+    var inputW6 = w6.style.backgroundColor;
+    var inputW5 = w5.style.backgroundColor;
+    var inputW4 = w4.style.backgroundColor;
+    var inputW3 = w3.style.backgroundColor;
+    var inputW2 = w2.style.backgroundColor;
+    var inputW1 = w1.style.backgroundColor;
+    localStorage.setItem('userData', inputData);
+    localStorage.setItem('userDataw6', inputW6);
+    localStorage.setItem('userDataw5', inputW5);
+    localStorage.setItem('userDataw4', inputW4);
+    localStorage.setItem('userDataw3', inputW3);
+    localStorage.setItem('userDataw2', inputW2);
+    localStorage.setItem('userDataw1', inputW1);
+
 });
+
+minus.addEventListener('mousedown', function (event) {
+    if (x == 500) {
+        x -= 500;
+        const w6a2 = w6.animate(
+            [
+                {
+                    height: "50px"
+                },
+                {
+                    height: "0px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w6a2.addEventListener('finish', function (event) {
+            w6.style.backgroundColor = nocolor;
+            var inputW6 = w6.style.backgroundColor;
+            localStorage.setItem('userDataw6', inputW6);
+        });
+        w6a2.addEventListener('cancel', function (event) {
+            w6.style.backgroundColor = nocolor;
+            var inputW6 = w6.style.backgroundColor;
+            localStorage.setItem('userDataw6', inputW6);
+        });
+        mesminus();
+    }
+    else if (x == 1000) {
+        x -= 500;
+        const w5a2 = w5.animate(
+            [
+                {
+                    height: "50px"
+                },
+                {
+                    height: "0px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w5a2.addEventListener('finish', function (event) {
+            w5.style.backgroundColor = nocolor;
+            var inputW5 = w5.style.backgroundColor;
+            localStorage.setItem('userDataw5', inputW5);
+        });
+        w5a2.addEventListener('cancel', function (event) {
+            w5.style.backgroundColor = nocolor;
+            var inputW5 = w5.style.backgroundColor;
+            localStorage.setItem('userDataw5', inputW5);
+        });
+        mesminus();
+    }
+    else if (x == 1500) {
+        x -= 500;
+        const w4a2 = w4.animate(
+            [
+                {
+                    height: "50px"
+                },
+                {
+                    height: "0px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w4a2.addEventListener('finish', function (event) {
+            w4.style.backgroundColor = nocolor;
+            var inputW4 = w4.style.backgroundColor;
+            localStorage.setItem('userDataw4', inputW4);
+        });
+        w4a2.addEventListener('cancel', function (event) {
+            w4.style.backgroundColor = nocolor;
+            var inputW4 = w4.style.backgroundColor;
+            localStorage.setItem('userDataw4', inputW4);
+        });
+        mesminus();
+    }
+    else if (x == 2000) {
+        x -= 500;
+        const w3a2 = w3.animate(
+            [
+                {
+                    height: "50px"
+                },
+                {
+                    height: "0px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w3a2.addEventListener('finish', function (event) {
+            w3.style.backgroundColor = nocolor;
+            var inputW3 = w3.style.backgroundColor;
+            localStorage.setItem('userDataw3', inputW3);
+        });
+        w3a2.addEventListener('cancel', function (event) {
+            w3.style.backgroundColor = nocolor;
+            var inputW3 = w3.style.backgroundColor;
+            localStorage.setItem('userDataw3', inputW3);
+        });
+        mesminus();
+    }
+    else if (x == 2500) {
+        x -= 500;
+        const w2a2 = w2.animate(
+            [
+                {
+                    height: "50px"
+                },
+                {
+                    height: "0px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w2a2.addEventListener('finish', function (event) {
+            w2.style.backgroundColor = nocolor;
+            var inputW2 = w2.style.backgroundColor;
+            localStorage.setItem('userDataw2', inputW2);
+        });
+        w2a2.addEventListener('cancel', function (event) {
+            w2.style.backgroundColor = nocolor;
+            var inputW2 = w2.style.backgroundColor;
+            localStorage.setItem('userDataw2', inputW2);
+        });
+        mesminus();
+    }
+    else if (x == 3000) {
+        x -= 500;
+        const w1a2 = w1.animate(
+            [
+                {
+                    height: "50px"
+                },
+                {
+                    height: "0px"
+                },
+            ],
+            {
+                duration: 200,
+                easing: "linear",
+            }
+        );
+        w1a2.addEventListener('finish', function (event) {
+            w1.style.backgroundColor = nocolor;
+            var inputW1 = w1.style.backgroundColor;
+            localStorage.setItem('userDataw1', inputW1);
+        });
+        w1a2.addEventListener('cancel', function (event) {
+            w1.style.backgroundColor = nocolor;
+            var inputW1 = w1.style.backgroundColor;
+            localStorage.setItem('userDataw1', inputW1);
+        });
+        mesminus();
+    }
+    else {
+        x = 0;
+        w6.style.backgroundColor = nocolor;
+    }
+    txt.textContent = x + "ML";
+    var inputData = x;
+    localStorage.setItem('userData', inputData);
+});
+
+
 
 var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 
 if (isMobile) {
     // Mobile device
+    link.style.visibility = "visible";
     bottle.addEventListener('touchstart', function (event) {
+        bottleover();
         bottle.style.pointerEvents = "none";
         bottle.style.touchAction = "none";
+        popup.style.visibility = "visible";
         const popanim = popup.animate(
             [
                 {
@@ -1504,6 +1509,9 @@ if (isMobile) {
             bottle.style.pointerEvents = "all";
         });
     });
+    bottle.addEventListener('touchend', function (event) {
+        bottleout();
+    });
     close.addEventListener('touchstart', function (event) {
         const popclose = popup.animate(
             [
@@ -1548,12 +1556,27 @@ if (isMobile) {
         );
         popclose.addEventListener('finish', function (event) {
             popup.style.transform = "scale(0)";
+            popup.style.visibility = "hidden";
         });
+    });
+
+    plus.addEventListener('touchstart', function (event) {
+        plusover();
+    });
+    plus.addEventListener('touchend', function (event) {
+        plusout();
+    });
+    minus.addEventListener('touchstart', function (event) {
+        minusover();
+    });
+    minus.addEventListener('touchend', function (event) {
+        minusout();
     });
 } else {
     // Desktop
     bottle.addEventListener('mousedown', function (event) {
         bottle.style.pointerEvents = "none";
+        popup.style.visibility = "visible";
         const popanim = popup.animate(
             [
                 {
@@ -1644,9 +1667,29 @@ if (isMobile) {
         );
         popclose.addEventListener('finish', function (event) {
             popup.style.transform = "scale(0)";
+            popup.style.visibility = "hidden";
         });
     });
 
+    plus.addEventListener('mouseover', function (event) {
+        plusover();
+    });
+    plus.addEventListener('mouseout', function (event) {
+        plusout();
+    });
+    minus.addEventListener('mouseover', function (event) {
+        minusover();
+    });
+    minus.addEventListener('mouseout', function (event) {
+        minusout();
+    });
+
+    bottle.addEventListener('mouseover', function (event) {
+        bottleover();
+    });
+    bottle.addEventListener('mouseout', function (event) {
+        bottleout();
+    });
 }
 
 apply.addEventListener('mousedown', function (event) {
@@ -2288,6 +2331,27 @@ bc4.addEventListener('mousedown', function (event) {
     bc3.style.border = "none";
 });
 
+function updateClock() {
+    // Create a new Date object to get the current time
+    var now = new Date();
+
+    // Extract hours, minutes, and seconds from the Date object
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+
+    // Add leading zero if the hours/minutes are less than 10
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+    // Update the clock display
+    clock.textContent = hours + ':' + minutes;
+}
+
+// Call updateClock() immediately to display the current time
+updateClock();
+
+// Update the clock every second (1000 milliseconds)
+setInterval(updateClock, 1000);
 
 var storedData = localStorage.getItem('userData');
 var storedDataw6 = localStorage.getItem('userDataw6');
