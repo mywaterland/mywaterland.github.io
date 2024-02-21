@@ -37,10 +37,99 @@ const backc = [bc1, bc2, bc3, bc4];
 let a1 = document.querySelector(".a1");
 let a2 = document.querySelector(".a2");
 let bot = document.querySelector(".bot");
-let link = document.querySelector(".link");
 var clock = document.querySelector(".clock");
+let custom = document.querySelector(".custom");
+
+let buttons = document.querySelector(".buttons");
 document.body.style.backgroundColor = nocolor;
 document.body.style.transform = "scale(0)";
+plus.style.borderColor = nocolor;
+minus.style.borderColor = nocolor;
+
+var storedData = localStorage.getItem('userData');
+var storedDataw6 = localStorage.getItem('userDataw6');
+var storedDataw5 = localStorage.getItem('userDataw5');
+var storedDataw4 = localStorage.getItem('userDataw4');
+var storedDataw3 = localStorage.getItem('userDataw3');
+var storedDataw2 = localStorage.getItem('userDataw2');
+var storedDataw1 = localStorage.getItem('userDataw1');
+var storedDatacur = localStorage.getItem('userCur');
+var storedDataA1 = localStorage.getItem('userA1');
+var storedDataA2 = localStorage.getItem('userA2');
+var storedDataBot = localStorage.getItem('userBot');
+var storedDataBack = localStorage.getItem('userBack');
+var storedDataNo = localStorage.getItem('userNo');
+
+if (storedData) {
+    if (storedData == "0") {
+        x = 0;
+    }
+    else if (storedData == "500") {
+        x = 500;
+    }
+    else if (storedData == "1000") {
+        x = 1000;
+    }
+    else if (storedData == "1500") {
+        x = 1500;
+    }
+    else if (storedData == "2000") {
+        x = 2000;
+    }
+    else if (storedData == "2500") {
+        x = 2500;
+    }
+    else if (storedData == "3000") {
+        x = 3000;
+    }
+    else {
+        x = 0;
+    }
+    txt.textContent = x + "ML";
+}
+else {
+    x = 0;
+    txt.textContent = x + "ML";
+}
+if (storedDataw6) {
+    w6.style.backgroundColor = storedDataw6;
+}
+if (storedDataw5) {
+    w5.style.backgroundColor = storedDataw5;
+}
+if (storedDataw4) {
+    w4.style.backgroundColor = storedDataw4;
+}
+if (storedDataw3) {
+    w3.style.backgroundColor = storedDataw3;
+}
+if (storedDataw2) {
+    w2.style.backgroundColor = storedDataw2;
+}
+if (storedDataw1) {
+    w1.style.backgroundColor = storedDataw1;
+}
+if (storedDatacur) {
+    curcolor = storedDatacur;
+}
+if (storedDataA1) {
+    a1.style.backgroundColor = storedDataA1;
+}
+if (storedDataA2) {
+    a2.style.backgroundColor = storedDataA1;
+}
+if (storedDataBot) {
+    bot.style.backgroundColor = storedDataA1;
+}
+if (storedDataBack) {
+    document.body.style.backgroundColor = storedDataBack;
+}
+if (storedDataNo) {
+    nocolor = storedDataNo;
+}
+plus.style.borderColor = nocolor;
+minus.style.borderColor = nocolor;
+custom.style.borderColor = nocolor;
 
 this.addEventListener('load', function (event) {
     const bodyanim = document.body.animate(
@@ -89,761 +178,72 @@ this.addEventListener('load', function (event) {
     });
 });
 
-function bottleover() {
-    if (curcolor === window.getComputedStyle(wc1).backgroundColor) {
-        curcover = "rgb(119, 167, 214)";
-    }
-    else if (curcolor === window.getComputedStyle(wc2).backgroundColor) {
-        curcover = "rgb(255, 229, 145)";
-    }
-    else if (curcolor === window.getComputedStyle(wc3).backgroundColor) {
-        curcover = "rgb(85, 63, 59)";
-    }
-    else if (curcolor === window.getComputedStyle(wc4).backgroundColor) {
-        curcover = "rgb(175, 175, 175)";
-    }
-    if (x == 3000) {
-        const w6over = w6.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6over.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcover;
-        });
-        const w5over = w5.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w5over.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = curcover;
-        });
-        const w4over = w4.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w4over.addEventListener('finish', function (event) {
-            w4.style.backgroundColor = curcover;
-        });
-        const w3over = w3.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w3over.addEventListener('finish', function (event) {
-            w3.style.backgroundColor = curcover;
-        });
-        const w2over = w2.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w2over.addEventListener('finish', function (event) {
-            w2.style.backgroundColor = curcover;
-        });
-        const w1over = w1.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w1over.addEventListener('finish', function (event) {
-            w1.style.backgroundColor = curcover;
-        });
-    }
-    else if (x == 2500) {
-        const w6over = w6.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6over.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcover;
-        });
-        const w5over = w5.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w5over.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = curcover;
-        });
-        const w4over = w4.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w4over.addEventListener('finish', function (event) {
-            w4.style.backgroundColor = curcover;
-        });
-        const w3over = w3.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w3over.addEventListener('finish', function (event) {
-            w3.style.backgroundColor = curcover;
-        });
-        const w2over = w2.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w2over.addEventListener('finish', function (event) {
-            w2.style.backgroundColor = curcover;
-        });
-    }
-    else if (x == 2000) {
-        const w6over = w6.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6over.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcover;
-        });
-        const w5over = w5.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w5over.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = curcover;
-        });
-        const w4over = w4.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w4over.addEventListener('finish', function (event) {
-            w4.style.backgroundColor = curcover;
-        });
-        const w3over = w3.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w3over.addEventListener('finish', function (event) {
-            w3.style.backgroundColor = curcover;
-        });
-    }
-    else if (x == 1500) {
-        const w6over = w6.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6over.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcover;
-        });
-        const w5over = w5.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w5over.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = curcover;
-        });
-        const w4over = w4.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w4over.addEventListener('finish', function (event) {
-            w4.style.backgroundColor = curcover;
-        });
-    }
-    else if (x == 1000) {
-        const w6over = w6.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6over.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcover;
-        });
-        const w5over = w5.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w5over.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = curcover;
-        });
-    }
-    else if (x == 500) {
-        const w6over = w6.animate(
-            [
-                {
-                    backgroundColor: curcolor
-                },
-                {
-                    backgroundColor: curcover
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6over.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcover;
-        });
-    }
-}
 
-function bottleout() {
-    if (x == 3000) {
-        const w6out = w6.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6out.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcolor;
-        });
-        const w5out = w5.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w5out.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = curcolor;
-        });
-        const w4out = w4.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w4out.addEventListener('finish', function (event) {
-            w4.style.backgroundColor = curcolor;
-        });
-        const w3out = w3.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w3out.addEventListener('finish', function (event) {
-            w3.style.backgroundColor = curcolor;
-        });
-        const w2out = w2.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w2out.addEventListener('finish', function (event) {
-            w2.style.backgroundColor = curcolor;
-        });
-        const w1out = w1.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w1out.addEventListener('finish', function (event) {
-            w1.style.backgroundColor = curcolor;
-        });
-    }
-    else if (x == 2500) {
-        const w6out = w6.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6out.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcolor;
-        });
-        const w5out = w5.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w5out.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = curcolor;
-        });
-        const w4out = w4.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w4out.addEventListener('finish', function (event) {
-            w4.style.backgroundColor = curcolor;
-        });
-        const w3out = w3.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w3out.addEventListener('finish', function (event) {
-            w3.style.backgroundColor = curcolor;
-        });
-        const w2out = w2.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w2out.addEventListener('finish', function (event) {
-            w2.style.backgroundColor = curcolor;
-        });
-    }
-    else if (x == 2000) {
-        const w6out = w6.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6out.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcolor;
-        });
-        const w5out = w5.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w5out.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = curcolor;
-        });
-        const w4out = w4.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w4out.addEventListener('finish', function (event) {
-            w4.style.backgroundColor = curcolor;
-        });
-        const w3out = w3.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w3out.addEventListener('finish', function (event) {
-            w3.style.backgroundColor = curcolor;
-        });
-    }
-    else if (x == 1500) {
-        const w6out = w6.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6out.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcolor;
-        });
-        const w5out = w5.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w5out.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = curcolor;
-        });
-        const w4out = w4.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w4out.addEventListener('finish', function (event) {
-            w4.style.backgroundColor = curcolor;
-        });
-    }
-    else if (x == 1000) {
-        const w6out = w6.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6out.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcolor;
-        });
-        const w5out = w5.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w5out.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = curcolor;
-        });
-    }
-    else if (x == 500) {
-        const w6out = w6.animate(
-            [
-                {
-                    backgroundColor: curcover
-                },
-                {
-                    backgroundColor: curcolor
-                },
-            ],
-            {
-                duration: 250,
-                easing: "linear",
-            }
-        );
-        w6out.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = curcolor;
-        });
-    }
-}
+// function bottleover() {
+//     if (curcolor === window.getComputedStyle(wc1).backgroundColor) {
+//         curcover = "rgb(119, 167, 214)";
+//     }
+//     else if (curcolor === window.getComputedStyle(wc2).backgroundColor) {
+//         curcover = "rgb(255, 229, 145)";
+//     }
+//     else if (curcolor === window.getComputedStyle(wc3).backgroundColor) {
+//         curcover = "rgb(85, 63, 59)";
+//     }
+//     else if (curcolor === window.getComputedStyle(wc4).backgroundColor) {
+//         curcover = "rgb(175, 175, 175)";
+//     }
+//     waters.forEach(item => {
+//         if (window.getComputedStyle(item).backgroundColor === curcolor) {
+//             const itemover = item.animate(
+//                 [
+//                     {
+//                         backgroundColor: curcolor
+//                     },
+//                     {
+//                         backgroundColor: curcover
+//                     },
+//                 ],
+//                 {
+//                     duration: 250,
+//                     easing: "linear",
+//                 }
+//             );
+//             itemover.addEventListener('finish', function (event) {
+//                 item.style.backgroundColor = curcover;
+//             });
+//             itemover.addEventListener('cancel', function (event) {
+//                 item.style.backgroundColor = curcover;
+//             });
+//         }
+//     });
+// }
+
+// function bottleout() {
+//     waters.forEach(item => {
+//         if (window.getComputedStyle(item).backgroundColor === curcover) {
+//             const itemout = item.animate(
+//                 [
+//                     {
+//                         backgroundColor: curcover
+//                     },
+//                     {
+//                         backgroundColor: curcolor
+//                     },
+//                 ],
+//                 {
+//                     duration: 250,
+//                     easing: "linear",
+//                 }
+//             );
+//             itemout.addEventListener('finish', function (event) {
+//                 item.style.backgroundColor = curcolor;
+//             });
+//             itemout.addEventListener('cancel', function (event) {
+//                 item.style.backgroundColor = curcolor;
+//             });
+//         }
+//     });
+// }
 
 function mesplus() {
     const mes = document.createElement("div");
@@ -1080,182 +480,7 @@ function minusout() {
     });
 }
 
-plus.addEventListener('mousedown', function (event) {
-    if (x == 3000) {
-        x = 3000;
-        w1.style.backgroundColor = curcolor;
-    }
-    else if (x == 2500) {
-        x += 500;
-        w1.style.height = "0px";
-        w1.style.backgroundColor = curcolor;
-        const w1a = w1.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w1a.addEventListener('finish', function (event) {
-            w1.style.height = "50px";
-            w1.style.backgroundColor = curcolor;
-        });
-
-        w1a.addEventListener('cancel', function (event) {
-            w1.style.height = "50px";
-            w1.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    else if (x == 2000) {
-        x += 500;
-        w2.style.height = "0px";
-        w2.style.backgroundColor = curcolor;
-        const w2a = w2.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w2a.addEventListener('finish', function (event) {
-            w2.style.height = "50px";
-            w2.style.backgroundColor = curcolor;
-        });
-        w2a.addEventListener('cancel', function (event) {
-            w2.style.height = "50px";
-            w2.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    else if (x == 1500) {
-        x += 500;
-        w3.style.height = "0px";
-        w3.style.backgroundColor = curcolor;
-        const w3a = w3.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w3a.addEventListener('finish', function (event) {
-            w3.style.height = "50px";
-            w3.style.backgroundColor = curcolor;
-        });
-        w3a.addEventListener('cancel', function (event) {
-            w3.style.height = "50px";
-            w3.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    else if (x == 1000) {
-        x += 500;
-        w4.style.height = "0px";
-        w4.style.backgroundColor = curcolor;
-        const w4a = w4.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w4a.addEventListener('finish', function (event) {
-            w4.style.height = "50px";
-            w4.style.backgroundColor = curcolor;
-        });
-        w4a.addEventListener('cancel', function (event) {
-            w4.style.height = "50px";
-            w4.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    else if (x == 500) {
-        x += 500;
-        w5.style.height = "0px";
-        w5.style.backgroundColor = curcolor;
-        const w5a = w5.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w5a.addEventListener('finish', function (event) {
-            w5.style.height = "50px";
-            w5.style.backgroundColor = curcolor;
-        });
-        w5a.addEventListener('cancel', function (event) {
-            w5.style.height = "50px";
-            w5.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    else {
-        x = 0;
-        x += 500;
-        w6.style.height = "0px";
-        w6.style.backgroundColor = curcolor;
-        const w6a = w6.animate(
-            [
-                {
-                    height: "0px"
-                },
-                {
-                    height: "50px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w6a.addEventListener('finish', function (event) {
-            w6.style.height = "50px";
-            w6.style.backgroundColor = curcolor;
-        });
-        w6a.addEventListener('cancel', function (event) {
-            w6.style.height = "50px";
-            w6.style.backgroundColor = curcolor;
-        });
-        mesplus();
-    }
-    txt.textContent = x + "ML";
+function localsave() {
     var inputData = x;
     var inputW6 = w6.style.backgroundColor;
     var inputW5 = w5.style.backgroundColor;
@@ -1270,405 +495,268 @@ plus.addEventListener('mousedown', function (event) {
     localStorage.setItem('userDataw3', inputW3);
     localStorage.setItem('userDataw2', inputW2);
     localStorage.setItem('userDataw1', inputW1);
+}
 
-});
+function popupopen() {
+    // bottleout();
+    bottle.style.pointerEvents = "none";
+    popup.style.visibility = "visible";
+    const popanim = popup.animate(
+        [
+            {
+                transform: "scale(0)"
+            },
+            {
+                transform: "scale(0.1)"
+            },
+            {
+                transform: "scale(0.2)"
+            },
+            {
+                transform: "scale(0.3)"
+            },
+            {
+                transform: "scale(0.4)"
+            },
+            {
+                transform: "scale(0.5)"
+            },
+            {
+                transform: "scale(0.6)"
+            },
+            {
+                transform: "scale(0.7)"
+            },
+            {
+                transform: "scale(0.8)"
+            },
+            {
+                transform: "scale(0.9)"
+            },
+            {
+                transform: "scale(1)"
+            },
+        ],
+        {
+            duration: 200,
+            easing: "linear",
+        }
+    );
+    popanim.addEventListener('finish', function (event) {
+        popup.style.transform = "scale(1)";
+        bottle.style.pointerEvents = "all";
+    });
+}
+function popupclose() {
+    const popclose = popup.animate(
+        [
+            {
+                transform: "scale(1)"
+            },
+            {
+                transform: "scale(0.9)"
+            },
+            {
+                transform: "scale(0.8)"
+            },
+            {
+                transform: "scale(0.7)"
+            },
+            {
+                transform: "scale(0.6)"
+            },
+            {
+                transform: "scale(0.5)"
+            },
+            {
+                transform: "scale(0.4)"
+            },
+            {
+                transform: "scale(0.3)"
+            },
+            {
+                transform: "scale(0.2)"
+            },
+            {
+                transform: "scale(0.1)"
+            },
+            {
+                transform: "scale(0)"
+            },
+        ],
+        {
+            duration: 200,
+            easing: "linear",
+        }
+    );
+    popclose.addEventListener('finish', function (event) {
+        popup.style.transform = "scale(0)";
+        popup.style.visibility = "hidden";
+    });
+}
 
-minus.addEventListener('mousedown', function (event) {
-    if (x == 500) {
-        x -= 500;
-        const w6a2 = w6.animate(
-            [
+function plusFun() {
+    for (let i = 5; i >= 0; i -= 1) {
+        if (x == 3000) { break; }
+        if (window.getComputedStyle(waters[i]).backgroundColor === nocolor) {
+            plus.style.pointerEvents = "none";
+            x += 500;
+            waters[i].style.height = "0px";
+            waters[i].style.backgroundColor = curcolor;
+            const wplus = waters[i].animate(
+                [
+                    {
+                        height: "0px"
+                    },
+                    {
+                        height: "50px"
+                    },
+                ],
                 {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w6a2.addEventListener('finish', function (event) {
-            w6.style.backgroundColor = nocolor;
-            var inputW6 = w6.style.backgroundColor;
-            localStorage.setItem('userDataw6', inputW6);
-        });
-        w6a2.addEventListener('cancel', function (event) {
-            w6.style.backgroundColor = nocolor;
-            var inputW6 = w6.style.backgroundColor;
-            localStorage.setItem('userDataw6', inputW6);
-        });
-        mesminus();
+                    duration: 200,
+                    easing: "linear",
+                }
+            );
+            wplus.addEventListener('finish', function (event) {
+                waters[i].style.height = "50px";
+                waters[i].style.backgroundColor = curcolor;
+                plus.style.pointerEvents = "all";
+            });
+
+            wplus.addEventListener('cancel', function (event) {
+                waters[i].style.height = "50px";
+                waters[i].style.backgroundColor = curcolor;
+                plus.style.pointerEvents = "all";
+            });
+            mesplus();
+            txt.textContent = x + "ML";
+            localsave();
+            break;
+        }
     }
-    else if (x == 1000) {
-        x -= 500;
-        const w5a2 = w5.animate(
-            [
+}
+function minusFun() {
+    for (let i = 0; 0 <= 5; i += 1) {
+        if (x == 0) { break; }
+        if (window.getComputedStyle(waters[i]).backgroundColor === curcolor) {
+            minus.style.pointerEvents = "none";
+            x -= 500;
+            const wform = waters[i].animate(
+                [
+                    {
+                        height: "50px"
+                    },
+                    {
+                        height: "0px"
+                    },
+                ],
                 {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w5a2.addEventListener('finish', function (event) {
-            w5.style.backgroundColor = nocolor;
-            var inputW5 = w5.style.backgroundColor;
-            localStorage.setItem('userDataw5', inputW5);
-        });
-        w5a2.addEventListener('cancel', function (event) {
-            w5.style.backgroundColor = nocolor;
-            var inputW5 = w5.style.backgroundColor;
-            localStorage.setItem('userDataw5', inputW5);
-        });
-        mesminus();
+                    duration: 200,
+                    easing: "linear",
+                }
+            );
+            wform.addEventListener('finish', function (event) {
+                waters[i].style.backgroundColor = nocolor;
+                minus.style.pointerEvents = "all";
+                localsave();
+            });
+            wform.addEventListener('cancel', function (event) {
+                waters[i].style.backgroundColor = nocolor;
+                minus.style.pointerEvents = "all";
+                localsave();
+            });
+            mesminus();
+            txt.textContent = x + "ML";
+            break;
+
+        }
+
     }
-    else if (x == 1500) {
-        x -= 500;
-        const w4a2 = w4.animate(
-            [
-                {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w4a2.addEventListener('finish', function (event) {
-            w4.style.backgroundColor = nocolor;
-            var inputW4 = w4.style.backgroundColor;
-            localStorage.setItem('userDataw4', inputW4);
-        });
-        w4a2.addEventListener('cancel', function (event) {
-            w4.style.backgroundColor = nocolor;
-            var inputW4 = w4.style.backgroundColor;
-            localStorage.setItem('userDataw4', inputW4);
-        });
-        mesminus();
-    }
-    else if (x == 2000) {
-        x -= 500;
-        const w3a2 = w3.animate(
-            [
-                {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w3a2.addEventListener('finish', function (event) {
-            w3.style.backgroundColor = nocolor;
-            var inputW3 = w3.style.backgroundColor;
-            localStorage.setItem('userDataw3', inputW3);
-        });
-        w3a2.addEventListener('cancel', function (event) {
-            w3.style.backgroundColor = nocolor;
-            var inputW3 = w3.style.backgroundColor;
-            localStorage.setItem('userDataw3', inputW3);
-        });
-        mesminus();
-    }
-    else if (x == 2500) {
-        x -= 500;
-        const w2a2 = w2.animate(
-            [
-                {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w2a2.addEventListener('finish', function (event) {
-            w2.style.backgroundColor = nocolor;
-            var inputW2 = w2.style.backgroundColor;
-            localStorage.setItem('userDataw2', inputW2);
-        });
-        w2a2.addEventListener('cancel', function (event) {
-            w2.style.backgroundColor = nocolor;
-            var inputW2 = w2.style.backgroundColor;
-            localStorage.setItem('userDataw2', inputW2);
-        });
-        mesminus();
-    }
-    else if (x == 3000) {
-        x -= 500;
-        const w1a2 = w1.animate(
-            [
-                {
-                    height: "50px"
-                },
-                {
-                    height: "0px"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        w1a2.addEventListener('finish', function (event) {
-            w1.style.backgroundColor = nocolor;
-            var inputW1 = w1.style.backgroundColor;
-            localStorage.setItem('userDataw1', inputW1);
-        });
-        w1a2.addEventListener('cancel', function (event) {
-            w1.style.backgroundColor = nocolor;
-            var inputW1 = w1.style.backgroundColor;
-            localStorage.setItem('userDataw1', inputW1);
-        });
-        mesminus();
-    }
-    else {
+}
+
+function reset() {
+    waters.forEach(item => {
+        item.style.backgroundColor = nocolor;
         x = 0;
-        w6.style.backgroundColor = nocolor;
-    }
-    txt.textContent = x + "ML";
-    var inputData = x;
-    localStorage.setItem('userData', inputData);
-});
+        txt.textContent = x + "ML";
+        localsave();
+    });
+}
 
-
+function cusover() {
+    const cusoveran = custom.animate(
+        [
+            {
+                borderColor: nocolor
+            },
+            {
+                borderColor: "#dd7f7fbb"
+            }
+        ],
+        {
+            duration: 300,
+            easing: "linear",
+        }
+    );
+    cusoveran.addEventListener('finish', function (event) {
+        custom.style.borderColor = "#dd7f7fbb";
+    });
+}
+function cusout() {
+    const cusoveran = custom.animate(
+        [
+            {
+                borderColor: "#dd7f7fbb"
+            },
+            {
+                borderColor: nocolor
+            }
+        ],
+        {
+            duration: 300,
+            easing: "linear",
+        }
+    );
+    cusoveran.addEventListener('finish', function (event) {
+        custom.style.borderColor = nocolor;
+    });
+}
 
 var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-
 if (isMobile) {
     // Mobile device
-    link.style.visibility = "visible";
-    bottle.addEventListener('touchstart', function (event) {
-        bottleover();
-        bottle.style.pointerEvents = "none";
-        bottle.style.touchAction = "none";
-        popup.style.visibility = "visible";
-        const popanim = popup.animate(
-            [
-                {
-                    transform: "scale(0)"
-                },
-                {
-                    transform: "scale(0.1)"
-                },
-                {
-                    transform: "scale(0.2)"
-                },
-                {
-                    transform: "scale(0.3)"
-                },
-                {
-                    transform: "scale(0.4)"
-                },
-                {
-                    transform: "scale(0.5)"
-                },
-                {
-                    transform: "scale(0.6)"
-                },
-                {
-                    transform: "scale(0.7)"
-                },
-                {
-                    transform: "scale(0.8)"
-                },
-                {
-                    transform: "scale(0.9)"
-                },
-                {
-                    transform: "scale(1)"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        popanim.addEventListener('finish', function (event) {
-            popup.style.transform = "scale(1)";
-            bottle.style.pointerEvents = "all";
-        });
+    custom.addEventListener('touchstart', function (event) {
+        cusover();
+        popupopen();
     });
-    bottle.addEventListener('touchend', function (event) {
-        bottleout();
+    custom.addEventListener('touchend', function (event) {
+        cusout();
     });
     close.addEventListener('touchstart', function (event) {
-        const popclose = popup.animate(
-            [
-                {
-                    transform: "scale(1)"
-                },
-                {
-                    transform: "scale(0.9)"
-                },
-                {
-                    transform: "scale(0.8)"
-                },
-                {
-                    transform: "scale(0.7)"
-                },
-                {
-                    transform: "scale(0.6)"
-                },
-                {
-                    transform: "scale(0.5)"
-                },
-                {
-                    transform: "scale(0.4)"
-                },
-                {
-                    transform: "scale(0.3)"
-                },
-                {
-                    transform: "scale(0.2)"
-                },
-                {
-                    transform: "scale(0.1)"
-                },
-                {
-                    transform: "scale(0)"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        popclose.addEventListener('finish', function (event) {
-            popup.style.transform = "scale(0)";
-            popup.style.visibility = "hidden";
-        });
+        popupclose();
     });
 
     plus.addEventListener('touchstart', function (event) {
         plusover();
+        plusFun();
     });
     plus.addEventListener('touchend', function (event) {
         plusout();
     });
     minus.addEventListener('touchstart', function (event) {
         minusover();
+        minusFun();
     });
     minus.addEventListener('touchend', function (event) {
         minusout();
     });
 } else {
     // Desktop
-    bottle.addEventListener('mousedown', function (event) {
-        bottle.style.pointerEvents = "none";
-        popup.style.visibility = "visible";
-        const popanim = popup.animate(
-            [
-                {
-                    transform: "scale(0)"
-                },
-                {
-                    transform: "scale(0.1)"
-                },
-                {
-                    transform: "scale(0.2)"
-                },
-                {
-                    transform: "scale(0.3)"
-                },
-                {
-                    transform: "scale(0.4)"
-                },
-                {
-                    transform: "scale(0.5)"
-                },
-                {
-                    transform: "scale(0.6)"
-                },
-                {
-                    transform: "scale(0.7)"
-                },
-                {
-                    transform: "scale(0.8)"
-                },
-                {
-                    transform: "scale(0.9)"
-                },
-                {
-                    transform: "scale(1)"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        popanim.addEventListener('finish', function (event) {
-            popup.style.transform = "scale(1)";
-            bottle.style.pointerEvents = "all";
-        });
+    custom.addEventListener('mousedown', function (event) {
+        popupopen();
     });
     close.addEventListener('mousedown', function (event) {
-        const popclose = popup.animate(
-            [
-                {
-                    transform: "scale(1)"
-                },
-                {
-                    transform: "scale(0.9)"
-                },
-                {
-                    transform: "scale(0.8)"
-                },
-                {
-                    transform: "scale(0.7)"
-                },
-                {
-                    transform: "scale(0.6)"
-                },
-                {
-                    transform: "scale(0.5)"
-                },
-                {
-                    transform: "scale(0.4)"
-                },
-                {
-                    transform: "scale(0.3)"
-                },
-                {
-                    transform: "scale(0.2)"
-                },
-                {
-                    transform: "scale(0.1)"
-                },
-                {
-                    transform: "scale(0)"
-                },
-            ],
-            {
-                duration: 200,
-                easing: "linear",
-            }
-        );
-        popclose.addEventListener('finish', function (event) {
-            popup.style.transform = "scale(0)";
-            popup.style.visibility = "hidden";
-        });
+        popupclose();
     });
 
     plus.addEventListener('mouseover', function (event) {
@@ -1684,13 +772,18 @@ if (isMobile) {
         minusout();
     });
 
-    bottle.addEventListener('mouseover', function (event) {
-        bottleover();
+    plus.addEventListener('mousedown', function (event) {
+        plusFun();
     });
-    bottle.addEventListener('mouseout', function (event) {
-        bottleout();
+
+    minus.addEventListener('mousedown', function (event) {
+        minusFun();
     });
+
+    custom.addEventListener('mouseover', cusover);
+    custom.addEventListener('mouseout', cusout);
 }
+
 
 apply.addEventListener('mousedown', function (event) {
     waterc.forEach(item => {
@@ -1699,6 +792,7 @@ apply.addEventListener('mousedown', function (event) {
                 if (item2.style.backgroundColor === curcolor) {
                     item2.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
                 }
+
             });
             curcolor = window.getComputedStyle(item).backgroundColor;
 
@@ -2339,9 +1433,23 @@ function updateClock() {
     var hours = now.getHours();
     var minutes = now.getMinutes();
 
+    const lastResetTime = localStorage.getItem('lastResetTime');
+    // Get the current date and time
+    const nowx = new Date();
+    const midnight = new Date(nowx.getFullYear(), nowx.getMonth(), nowx.getDate(), 0, 0, 0); // Midnight of the current day
+    // Check if the current time is after midnight and the last reset time is before midnight
+    if (nowx > midnight && (!lastResetTime || new Date(lastResetTime) < midnight)) {
+        // Reset the measured data (replace this with your actual reset logic)
+        reset();
+
+        // Update the last reset time to the current time
+
+    }
+    localStorage.setItem('lastResetTime', nowx);
     // Add leading zero if the hours/minutes are less than 10
     hours = hours < 10 ? '0' + hours : hours;
     minutes = minutes < 10 ? '0' + minutes : minutes;
+
 
     // Update the clock display
     clock.textContent = hours + ':' + minutes;
@@ -2353,79 +1461,3 @@ updateClock();
 // Update the clock every second (1000 milliseconds)
 setInterval(updateClock, 1000);
 
-var storedData = localStorage.getItem('userData');
-var storedDataw6 = localStorage.getItem('userDataw6');
-var storedDataw5 = localStorage.getItem('userDataw5');
-var storedDataw4 = localStorage.getItem('userDataw4');
-var storedDataw3 = localStorage.getItem('userDataw3');
-var storedDataw2 = localStorage.getItem('userDataw2');
-var storedDataw1 = localStorage.getItem('userDataw1');
-var storedDatacur = localStorage.getItem('userCur');
-var storedDataA1 = localStorage.getItem('userA1');
-var storedDataA2 = localStorage.getItem('userA2');
-var storedDataBot = localStorage.getItem('userBot');
-var storedDataBack = localStorage.getItem('userBack');
-var storedDataNo = localStorage.getItem('userNo');
-
-if (storedData) {
-    if (storedData == "0") {
-        x = 0;
-    }
-    else if (storedData == "500") {
-        x = 500;
-    }
-    else if (storedData == "1000") {
-        x = 1000;
-    }
-    else if (storedData == "1500") {
-        x = 1500;
-    }
-    else if (storedData == "2000") {
-        x = 2000;
-    }
-    else if (storedData == "2500") {
-        x = 2500;
-    }
-    else if (storedData == "3000") {
-        x = 3000;
-    }
-    txt.textContent = x + "ML";
-}
-if (storedDataw6) {
-    w6.style.backgroundColor = storedDataw6;
-}
-if (storedDataw5) {
-    w5.style.backgroundColor = storedDataw5;
-}
-if (storedDataw4) {
-    w4.style.backgroundColor = storedDataw4;
-}
-if (storedDataw3) {
-    w3.style.backgroundColor = storedDataw3;
-}
-if (storedDataw2) {
-    w2.style.backgroundColor = storedDataw2;
-}
-if (storedDataw1) {
-    w1.style.backgroundColor = storedDataw1;
-}
-if (storedDatacur) {
-    curcolor = storedDatacur;
-}
-if (storedDataA1) {
-    a1.style.backgroundColor = storedDataA1;
-}
-if (storedDataA2) {
-    a2.style.backgroundColor = storedDataA1;
-}
-if (storedDataBot) {
-    bot.style.backgroundColor = storedDataA1;
-}
-if (storedDataBack) {
-    document.body.style.backgroundColor = storedDataBack;
-}
-if (storedDataNo) {
-    nocolor = storedDataNo;
-}
-plus.style.borderColor = nocolor;
-minus.style.borderColor = nocolor;
