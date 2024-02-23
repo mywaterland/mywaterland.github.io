@@ -38,7 +38,6 @@ let a1 = document.querySelector(".a1");
 let a2 = document.querySelector(".a2");
 let bot = document.querySelector(".bot");
 var clock = document.querySelector(".clock");
-let custom = document.querySelector(".custom");
 
 let buttons = document.querySelector(".buttons");
 document.body.style.backgroundColor = nocolor;
@@ -129,7 +128,6 @@ if (storedDataNo) {
 }
 plus.style.borderColor = nocolor;
 minus.style.borderColor = nocolor;
-custom.style.borderColor = nocolor;
 
 this.addEventListener('load', function (event) {
     const bodyanim = document.body.animate(
@@ -178,72 +176,6 @@ this.addEventListener('load', function (event) {
     });
 });
 
-
-// function bottleover() {
-//     if (curcolor === window.getComputedStyle(wc1).backgroundColor) {
-//         curcover = "rgb(119, 167, 214)";
-//     }
-//     else if (curcolor === window.getComputedStyle(wc2).backgroundColor) {
-//         curcover = "rgb(255, 229, 145)";
-//     }
-//     else if (curcolor === window.getComputedStyle(wc3).backgroundColor) {
-//         curcover = "rgb(85, 63, 59)";
-//     }
-//     else if (curcolor === window.getComputedStyle(wc4).backgroundColor) {
-//         curcover = "rgb(175, 175, 175)";
-//     }
-//     waters.forEach(item => {
-//         if (window.getComputedStyle(item).backgroundColor === curcolor) {
-//             const itemover = item.animate(
-//                 [
-//                     {
-//                         backgroundColor: curcolor
-//                     },
-//                     {
-//                         backgroundColor: curcover
-//                     },
-//                 ],
-//                 {
-//                     duration: 250,
-//                     easing: "linear",
-//                 }
-//             );
-//             itemover.addEventListener('finish', function (event) {
-//                 item.style.backgroundColor = curcover;
-//             });
-//             itemover.addEventListener('cancel', function (event) {
-//                 item.style.backgroundColor = curcover;
-//             });
-//         }
-//     });
-// }
-
-// function bottleout() {
-//     waters.forEach(item => {
-//         if (window.getComputedStyle(item).backgroundColor === curcover) {
-//             const itemout = item.animate(
-//                 [
-//                     {
-//                         backgroundColor: curcover
-//                     },
-//                     {
-//                         backgroundColor: curcolor
-//                     },
-//                 ],
-//                 {
-//                     duration: 250,
-//                     easing: "linear",
-//                 }
-//             );
-//             itemout.addEventListener('finish', function (event) {
-//                 item.style.backgroundColor = curcolor;
-//             });
-//             itemout.addEventListener('cancel', function (event) {
-//                 item.style.backgroundColor = curcolor;
-//             });
-//         }
-//     });
-// }
 
 function mesplus() {
     const mes = document.createElement("div");
@@ -683,55 +615,9 @@ function reset() {
     });
 }
 
-function cusover() {
-    const cusoveran = custom.animate(
-        [
-            {
-                borderColor: nocolor
-            },
-            {
-                borderColor: "#dd7f7fbb"
-            }
-        ],
-        {
-            duration: 300,
-            easing: "linear",
-        }
-    );
-    cusoveran.addEventListener('finish', function (event) {
-        custom.style.borderColor = "#dd7f7fbb";
-    });
-}
-function cusout() {
-    const cusoveran = custom.animate(
-        [
-            {
-                borderColor: "#dd7f7fbb"
-            },
-            {
-                borderColor: nocolor
-            }
-        ],
-        {
-            duration: 300,
-            easing: "linear",
-        }
-    );
-    cusoveran.addEventListener('finish', function (event) {
-        custom.style.borderColor = nocolor;
-    });
-}
 
 var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 if (isMobile) {
-    // Mobile device
-    custom.addEventListener('touchstart', function (event) {
-        cusover();
-        popupopen();
-    });
-    custom.addEventListener('touchend', function (event) {
-        cusout();
-    });
     close.addEventListener('touchstart', function (event) {
         popupclose();
     });
@@ -751,10 +637,6 @@ if (isMobile) {
         minusout();
     });
 } else {
-    // Desktop
-    custom.addEventListener('mousedown', function (event) {
-        popupopen();
-    });
     close.addEventListener('mousedown', function (event) {
         popupclose();
     });
@@ -779,9 +661,6 @@ if (isMobile) {
     minus.addEventListener('mousedown', function (event) {
         minusFun();
     });
-
-    custom.addEventListener('mouseover', cusover);
-    custom.addEventListener('mouseout', cusout);
 }
 
 
@@ -1426,38 +1305,27 @@ bc4.addEventListener('mousedown', function (event) {
 });
 
 function updateClock() {
-    // Create a new Date object to get the current time
     var now = new Date();
 
-    // Extract hours, minutes, and seconds from the Date object
     var hours = now.getHours();
     var minutes = now.getMinutes();
 
     const lastResetTime = localStorage.getItem('lastResetTime');
-    // Get the current date and time
+
     const nowx = new Date();
-    const midnight = new Date(nowx.getFullYear(), nowx.getMonth(), nowx.getDate(), 0, 0, 0); // Midnight of the current day
-    // Check if the current time is after midnight and the last reset time is before midnight
+    const midnight = new Date(nowx.getFullYear(), nowx.getMonth(), nowx.getDate(), 0, 0, 0);
     if (nowx > midnight && (!lastResetTime || new Date(lastResetTime) < midnight)) {
-        // Reset the measured data (replace this with your actual reset logic)
         reset();
-
-        // Update the last reset time to the current time
-
     }
     localStorage.setItem('lastResetTime', nowx);
-    // Add leading zero if the hours/minutes are less than 10
     hours = hours < 10 ? '0' + hours : hours;
     minutes = minutes < 10 ? '0' + minutes : minutes;
 
 
-    // Update the clock display
     clock.textContent = hours + ':' + minutes;
 }
 
-// Call updateClock() immediately to display the current time
 updateClock();
 
-// Update the clock every second (1000 milliseconds)
 setInterval(updateClock, 1000);
 
