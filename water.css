@@ -11,6 +11,53 @@ body {
     /*transform: scale(1);*/
 }
 
+.menupic {
+    position: fixed;
+    top: 5%;
+    left: 2%;
+    cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    color: #000000;
+    text-align: center;
+    font-size: 22px;
+}
+
+.submenu {
+    position: fixed;
+    width: 130px;
+    height: 30px;
+    /* left: 2%; */
+    left: -8%;
+    background-color: #a8a8a8;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.custom {
+    top: 5%;
+}
+
+.about {
+    top: 9.7%;
+}
+
+.back {
+    position: fixed;
+    top: 1.5%;
+    /* left: 2%; */
+    left: -3%;
+    cursor: pointer;
+}
+
 .bottle {
     display: flex;
     flex-direction: column;
@@ -133,7 +180,7 @@ body {
 }
 
 .txt {
-    position: absolute;
+    position: fixed;
     text-align: center;
     font-size: 3em;
     top: 40%;
@@ -282,9 +329,9 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: absolute;
-    top: 1vh;
-    left: 90%;
+    position: fixed;
+    top: 5%;
+    left: 95%;
     font-size: 20px;
 }
 
@@ -297,14 +344,6 @@ body {
     border: solid 2px #dd7f7fbb;
     border-radius: 10px;
     padding: 10px;
-}
-.custom{
-    font-size: 35px;
-    color: #dd7f7fbb;
-    border: solid 4px;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
 }
 
 @media only screen and (max-width: 1238px) {
@@ -351,6 +390,13 @@ body {
     }
 }
 
+@media only screen and (max-height: 657px) {
+    .back {
+        top: -1%;
+    }
+}
+
+
 @media only screen and (max-height: 700px),
 (max-width:900px) {
     .color {
@@ -382,8 +428,8 @@ body {
     }
 }
 
-@media only screen and (min-width:1200px) {
+@media only screen and (max-width:613px) {
     .link {
-        left: 95%;
+        left: 90%;
     }
 }
