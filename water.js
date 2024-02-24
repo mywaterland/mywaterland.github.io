@@ -38,12 +38,25 @@ let a1 = document.querySelector(".a1");
 let a2 = document.querySelector(".a2");
 let bot = document.querySelector(".bot");
 var clock = document.querySelector(".clock");
-
 let buttons = document.querySelector(".buttons");
+let menu = document.getElementById("menu");
+let menupic = document.getElementById("menupic");
+let mline = document.getElementById("mline");
+let mline2 = document.getElementById("mline2");
+let mline3 = document.getElementById("mline3");
+const mlines = [mline, mline2, mline3];
+let about = document.getElementById("about");
+let custom = document.getElementById("custom");
+let lol = false;
+const abouttop = window.getComputedStyle(about).top;
+const customtop = window.getComputedStyle(custom).top;
+let aboutgotop = "9.7%";
+let customgotop = "5%";
+
+let link = document.getElementById("link");
+
 document.body.style.backgroundColor = nocolor;
 document.body.style.transform = "scale(0)";
-plus.style.borderColor = nocolor;
-minus.style.borderColor = nocolor;
 
 var storedData = localStorage.getItem('userData');
 var storedDataw6 = localStorage.getItem('userDataw6');
@@ -128,6 +141,20 @@ if (storedDataNo) {
 }
 plus.style.borderColor = nocolor;
 minus.style.borderColor = nocolor;
+menupic.style.borderColor = "#f2f3f400";
+
+if (document.body.clientHeight <= 700) {
+    aboutgotop = "10.7%";
+}
+if (document.body.clientHeight <= 570) {
+    aboutgotop = "11.7%";
+}
+if (document.body.clientHeight <= 467) {
+    aboutgotop = "12.7%";
+}
+if (document.body.clientHeight <= 408) {
+    aboutgotop = "13.7%";
+}
 
 this.addEventListener('load', function (event) {
     const bodyanim = document.body.animate(
@@ -430,7 +457,7 @@ function localsave() {
 }
 
 function popupopen() {
-    // bottleout();
+    menuBack();
     bottle.style.pointerEvents = "none";
     popup.style.visibility = "visible";
     const popanim = popup.animate(
@@ -615,6 +642,172 @@ function reset() {
     });
 }
 
+function menuGo() {
+    menu.style.visibility = "visible";
+    menupic.style.pointerEvents = "none";
+    mlines.forEach(item => {
+        const mlinego = item.animate(
+            [
+                {
+                    backgroundColor: "#f2f3f4"
+                },
+                {
+                    backgroundColor: "#f2f3f400"
+                }
+            ],
+            {
+                duration: 200,
+                easing: "linear"
+            }
+        )
+        mlinego.addEventListener('finish', function (event) {
+            item.style.backgroundColor = "#f2f3f400";
+            item.style.visibility = "hidden";
+        });
+    });
+    function customGo() {
+        const customAnimGo = custom.animate(
+            [
+                {
+                    top: customtop
+                },
+                {
+                    top: customgotop
+                },
+            ],
+            {
+                duration: 200,
+                easing: "ease-in",
+            }
+        );
+        customAnimGo.addEventListener('finish', function (event) {
+            custom.style.top = customgotop;
+            lol = true;
+        });
+    }
+    const aboutAnimGo = about.animate(
+        [
+            {
+                top: abouttop
+            },
+            {
+                top: aboutgotop
+            },
+        ],
+        {
+            duration: 200,
+            easing: "ease-in",
+        }
+    );
+
+    aboutAnimGo.addEventListener('finish', function (event) {
+        customGo();
+        about.style.top = aboutgotop;
+        document.body.style.pointerEvents = "all";
+    });
+}
+function menuBack() {
+    menupic.style.pointerEvents = "all";
+    mlines.forEach(item => {
+        item.style.visibility = "visible";
+        const mlineback = item.animate(
+            [
+                {
+                    backgroundColor: "#f2f3f400"
+                },
+                {
+                    backgroundColor: "#f2f3f4"
+                }
+            ],
+            {
+                duration: 200,
+                easing: "linear"
+            }
+        )
+        mlineback.addEventListener('finish', function (event) {
+            item.style.backgroundColor = "#f2f3f4";
+        });
+    });
+    function customBack() {
+        const customAnimBack = custom.animate(
+            [
+                {
+                    top: customgotop
+                },
+                {
+                    top: customtop
+                },
+            ],
+            {
+                duration: 200,
+                easing: "ease-out",
+            }
+        );
+        customAnimBack.addEventListener('finish', function (event) {
+            custom.style.top = customtop;
+            menu.style.visibility = "hidden";
+            lol = false;
+        });
+    }
+    const aboutAnimBack = about.animate(
+        [
+            {
+                top: aboutgotop
+            },
+            {
+                top: abouttop
+            },
+        ],
+        {
+            duration: 200,
+            easing: "ease-out",
+        }
+    );
+
+    aboutAnimBack.addEventListener('finish', function (event) {
+        customBack();
+        about.style.top = abouttop;
+    });
+}
+
+function menupicOver() {
+    const menupicOverGo = menupic.animate(
+        [
+            {
+                borderColor: "#f2f3f400"
+            },
+            {
+                borderColor: "#f2f3f4"
+            },
+        ],
+        {
+            duration: 300,
+            easing: "linear",
+        }
+    );
+    menupicOverGo.addEventListener('finish', function (event) {
+        menupic.style.borderColor = "#f2f3f4";
+    });
+}
+function menupicOut() {
+    const menupicOutGo = menupic.animate(
+        [
+            {
+                borderColor: "#f2f3f4"
+            },
+            {
+                borderColor: "#f2f3f400"
+            },
+        ],
+        {
+            duration: 300,
+            easing: "linear",
+        }
+    );
+    menupicOutGo.addEventListener('finish', function (event) {
+        menupic.style.borderColor = "#f2f3f400";
+    });
+}
 
 var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 if (isMobile) {
@@ -625,6 +818,9 @@ if (isMobile) {
     plus.addEventListener('touchstart', function (event) {
         plusover();
         plusFun();
+        if (about.style.top == "9.7%") {
+            menuBack();
+        }
     });
     plus.addEventListener('touchend', function (event) {
         plusout();
@@ -632,9 +828,51 @@ if (isMobile) {
     minus.addEventListener('touchstart', function (event) {
         minusover();
         minusFun();
+        if (about.style.top == "9.7%") {
+            menuBack();
+        }
     });
     minus.addEventListener('touchend', function (event) {
         minusout();
+    });
+    menupic.addEventListener('touchstart', function (event) {
+        menupicOver();
+        menuGo();
+    });;
+    menupic.addEventListener('touchend', menupicOut);
+    about.addEventListener('touchstart', function (event) {
+        lol = false;
+    });
+    about.addEventListener('touchend', function (event) {
+        lol = true;
+    });
+    custom.addEventListener('touchstart', function (event) {
+        lol = false;
+        popupopen();
+    });
+    custom.addEventListener('touchend', function (event) {
+        lol = true;
+    });
+    document.addEventListener('touchstart', function (event) {
+        console.log(about.style.top);
+        if (lol == true) {
+            menuBack();
+        }
+    });
+    bottle.addEventListener('touchstart', function (event) {
+        if (about.style.top == aboutgotop) {
+            menuBack();
+        }
+    });
+    txt.addEventListener('touchstart', function (event) {
+        if (about.style.top == aboutgotop) {
+            menuBack();
+        }
+    });
+    clock.addEventListener('touchstart', function (event) {
+        if (about.style.top == aboutgotop) {
+            menuBack();
+        }
     });
 } else {
     close.addEventListener('mousedown', function (event) {
@@ -656,10 +894,54 @@ if (isMobile) {
 
     plus.addEventListener('mousedown', function (event) {
         plusFun();
+        if (about.style.top == "9.7%") {
+            menuBack();
+        }
     });
 
     minus.addEventListener('mousedown', function (event) {
         minusFun();
+        if (about.style.top == "9.7%") {
+            menuBack();
+        }
+    });
+
+    menupic.addEventListener('mouseover', menupicOver);
+    menupic.addEventListener('mouseout', menupicOut);
+    menupic.addEventListener('mousedown', menuGo);
+    about.addEventListener('mousedown', function (event) {
+        lol = false;
+    });
+    about.addEventListener('mouseout', function (event) {
+        lol = true;
+    });
+    custom.addEventListener('mousedown', function (event) {
+        lol = false;
+        popupopen();
+    });
+    custom.addEventListener('mouseout', function (event) {
+        lol = true;
+    });
+    document.addEventListener('mousedown', function (event) {
+        console.log(about.style.top);
+        if (lol == true) {
+            menuBack();
+        }
+    });
+    bottle.addEventListener('mousedown', function (event) {
+        if (about.style.top == aboutgotop) {
+            menuBack();
+        }
+    });
+    txt.addEventListener('mousedown', function (event) {
+        if (about.style.top == aboutgotop) {
+            menuBack();
+        }
+    });
+    clock.addEventListener('mousedown', function (event) {
+        if (about.style.top == aboutgotop) {
+            menuBack();
+        }
     });
 }
 
@@ -1303,6 +1585,8 @@ bc4.addEventListener('mousedown', function (event) {
     bc2.style.border = "none";
     bc3.style.border = "none";
 });
+
+
 
 function updateClock() {
     var now = new Date();
