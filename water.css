@@ -8,6 +8,7 @@ body {
     font-family: "Roboto", sans-serif;
     font-style: normal;
     color: #2c426b;
+
     /*transform: scale(1);*/
 }
 
@@ -16,6 +17,21 @@ body {
     top: 5%;
     left: 2%;
     cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 35px;
+    border: solid 2px;
+    border-radius: 50%;
+    padding: 12px;
+}
+
+.mline {
+    width: 35px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: #f2f3f4;
+    pointer-events: none;
 }
 
 .menu {
@@ -23,19 +39,19 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 80px;
     color: #000000;
     text-align: center;
     font-size: 22px;
+    visibility: hidden;
+
 }
 
 .submenu {
     position: fixed;
     width: 130px;
     height: 30px;
-    /* left: 2%; */
-    left: -8%;
-    background-color: #a8a8a8;
+    left: 2%;
+    background-color: #f2f3f4;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
@@ -43,19 +59,13 @@ body {
 }
 
 .custom {
-    top: 5%;
+    /* top: 5%; */
+    top: -10%;
 }
 
 .about {
-    top: 9.7%;
-}
-
-.back {
-    position: fixed;
-    top: 1.5%;
-    /* left: 2%; */
-    left: -3%;
-    cursor: pointer;
+    /* top: 9.7%; */
+    top: -5.3%;
 }
 
 .bottle {
@@ -94,6 +104,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    pointer-events: none;
 }
 
 .w1 {
@@ -121,7 +132,6 @@ body {
     font-size: 5em;
     width: 200px;
     height: 70px;
-    margin-bottom: 40px;
 }
 
 .plus {
@@ -184,7 +194,7 @@ body {
     text-align: center;
     font-size: 3em;
     top: 40%;
-    pointer-events: none;
+    cursor: default;
 }
 
 .negr {
@@ -344,6 +354,13 @@ body {
     border: solid 2px #dd7f7fbb;
     border-radius: 10px;
     padding: 10px;
+    pointer-events: none;
+}
+
+@media only screen and (max-width: 1302px) {
+    .back {
+        left: -5%;
+    }
 }
 
 @media only screen and (max-width: 1238px) {
@@ -352,8 +369,6 @@ body {
         height: 70px;
     }
 }
-
-@media only screen and (max-width: 972px) {}
 
 @media only screen and (max-width: 548px) {
     .color {
@@ -421,10 +436,30 @@ body {
     }
 }
 
+@media only screen and (max-height: 725px) {
+    .custom {
+        top: -14%;
+    }
+
+    .about {
+        top: -9.3%;
+    }
+}
+
+@media only screen and (max-height: 416px) {
+    .custom {
+        top: -18%;
+    }
+
+    .about {
+        top: -13.3%;
+    }
+}
+
 @media only screen and (max-height: 700px) {
     .clock {
         left: -310px;
-        top: 90px;
+        top: 190px;
     }
 }
 
