@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anta&family=Kdam+Thmor+Pro&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Slackside+One&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -19,11 +22,11 @@
             <div class="arms">
                 <div class="arm a1"></div>
                 <div class="water">
-                    <div class="lilw w1"></div>
-                    <div class="lilw w2"></div>
-                    <div class="lilw w3"></div>
-                    <div class="lilw w4"></div>
-                    <div class="lilw w5"></div>
+                    <div class="lilw w1" id="w1"></div>
+                    <div class="lilw w2" id="w2"></div>
+                    <div class="lilw w3" id="w3"></div>
+                    <div class="lilw w4" id="w4"></div>
+                    <div class="lilw w5" id="w5"></div>
                     <div class="lilw w6" id="w6"></div>
                 </div>
                 <div class="arm a2"></div>
@@ -31,18 +34,22 @@
             <div class="bot"></div>
         </div>
     </div>
-    <div class="buttons">
-        <div class="plus">
-            <div class="parm pl"></div>
-            <div class="pmid"></div>
-            <div class="parm pr"></div>
+    <div class="buttons" id="buttons">
+        <div class="plus" id="plus">
+            <div class="parm pl" id="pl"></div>
+            <div class="pmid" id="pmid"></div>
+            <div class="parm pr" id="pr"></div>
         </div>
-        <div class="minus">
-            <div class="marm"></div>
+        <div class="reset" id="reset">Reset</div>
+        <div class="minus" id="minus">
+            <div class="marm" id="marm"></div>
         </div>
     </div>
     <!-- <div class="custom">Customize</div> -->
-    <div class="txt"></div>
+    <div class="tbox">
+        <div class="txt"></div>
+        <div class="tline" id="tline"></div>
+    </div>
     <div class="popup">
         <div class="t1">Color changer</div>
         WATER
@@ -113,6 +120,7 @@
         <div class="mline" id="mline2"></div>
         <div class="mline" id="mline3"></div>
     </div>
+    <div class="sign">Mistrmochov</div>
     <script src="water.js"></script>
 </body>
 
