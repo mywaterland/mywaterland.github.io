@@ -5,7 +5,9 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #1F1F1F;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
     font-style: normal;
     color: #2c426b;
 
@@ -129,7 +131,6 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    font-size: 5em;
     width: 200px;
     height: 70px;
 }
@@ -142,7 +143,8 @@ body {
     border: solid 4px;
     border-radius: 15px;
     padding: 10px;
-
+    cursor: pointer;
+    /* visibility: collapse; */
 }
 
 .parm {
@@ -170,6 +172,18 @@ body {
     pointer-events: none;
 }
 
+.reset {
+    font-size: 30px;
+    color: #f2f3f400;
+    border: solid 2px #f2f3f4;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    visibility: collapse;
+    pointer-events: none;
+    /* background-color: #f2f3f430; */
+}
+
 .minus {
     display: flex;
     justify-content: center;
@@ -179,6 +193,8 @@ body {
     height: 50px;
     padding: 10px;
     border-radius: 15px;
+    cursor: pointer;
+    /* visibility: collapse; */
 }
 
 .marm {
@@ -189,12 +205,24 @@ body {
     pointer-events: none;
 }
 
-.txt {
+.tbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     position: fixed;
     text-align: center;
     font-size: 3em;
     top: 40%;
     cursor: default;
+}
+
+
+.tline {
+    width: 0px;
+    height: 3px;
+    background-color: #70dba6;
+    border-radius: 5px;
 }
 
 .negr {
@@ -357,6 +385,16 @@ body {
     pointer-events: none;
 }
 
+.sign {
+    position: fixed;
+    right: 5%;
+    top: 95%;
+    font-family: "Slackside One", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: #f2f3f4;
+    font-size: 17px;
+}
 @media only screen and (max-width: 1302px) {
     .back {
         left: -5%;
