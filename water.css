@@ -5,10 +5,10 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #1F1F1F;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
+    font-family: "MesloLGM Nerd Font";
     font-style: normal;
+    font-weight: 400;
+    src: url('fonts/MesloLGMNerdFont-Regular.ttf') format('truetype');
     color: #2c426b;
 
     /*transform: scale(1);*/
@@ -123,7 +123,6 @@ body {
     width: 215px;
     height: 50px;
     pointer-events: none;
-    background-color: rgb(31, 31, 31);
 }
 
 .buttons {
@@ -179,8 +178,9 @@ body {
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
-    visibility: collapse;
+    display: none;
     pointer-events: none;
+    margin-left: 45px;
     /* background-color: #f2f3f430; */
 }
 
@@ -364,13 +364,14 @@ body {
 .link {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     position: fixed;
+    height: 35px;
     top: 5%;
     left: 95%;
-    font-size: 20px;
+    cursor: pointer;
 }
 
 .clock {
@@ -395,6 +396,86 @@ body {
     color: #f2f3f4;
     font-size: 17px;
 }
+
+.dwarrow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 16px;
+}
+
+.dwaleft {
+    transform: rotate(-45deg);
+}
+
+.dwaright {
+    transform: rotate(45deg);
+}
+
+.dwarm {
+    background-color: #f2f3f4;
+    height: 15px;
+    width: 5px;
+    justify-self: flex-end;
+}
+
+.dwmid {
+    width: 5px;
+    height: 26px;
+    background-color: #f2f3f4;
+}
+
+.dwbotline {
+    width: 35px;
+    height: 5px;
+    background-color: #f2f3f4;
+}
+
+.arrline {
+    border-radius: 10px;
+}
+
+.AboutPopup {
+    position: absolute;
+    top: 10%;
+    left: 41%;
+    width: 18vw;
+    /*height: 50vh;*/
+    height: 0vh;
+    margin-top: 25vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    border: solid #f2f3f4;
+    border-width: 0px;
+    border-radius: 15px;
+    color: #f2f3f4;
+    background-color: #717171e3;
+    overflow: hidden;
+    visibility: hidden;
+}
+.AboutTitle{
+    font-size: 34px;
+    color: rgb(84, 169, 254);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 17vw;
+}
+.AboutLogo{
+    width: 50px;
+    height: 50px;
+}
+.AboutBlock{
+    width: 14vw;
+    border: solid #f2f3f4 2px;
+    border-radius: 15px;
+    padding: 5px;
+}
+
 @media only screen and (max-width: 1302px) {
     .back {
         left: -5%;
@@ -412,6 +493,10 @@ body {
     .color {
         width: 110px;
         height: 50px;
+    }
+
+    .t1 {
+        font-size: 30px;
     }
 }
 
