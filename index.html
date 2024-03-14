@@ -9,16 +9,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Anta&family=Kdam+Thmor+Pro&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anta&family=Kdam+Thmor+Pro&family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Slackside+One&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <div class="clock"></div>
+    <div class="clock" id="clock"></div>
     <div class="head" id="hed">
-        <div class="bottle">
+        <div class="bottle" id="bottle">
             <div class="arms">
                 <div class="arm a1"></div>
                 <div class="water">
@@ -47,11 +47,11 @@
     </div>
     <!-- <div class="custom">Customize</div> -->
     <div class="tbox">
-        <div class="txt"></div>
+        <div class="txt" id="txt"></div>
         <div class="tline" id="tline"></div>
     </div>
     <div class="popup">
-        <div class="t1">Color changer</div>
+        <div class="t1" id="t1">Color changer</div>
         WATER
         <div class="watery block">
             <div class="color wc1">
@@ -107,8 +107,12 @@
         </div>
     </div>
     <div class="link" id="link">
-        <a href="https://github.com/mywaterland/mywaterland.github.io/raw/waterland_android_1.1/app-release.apk"
-            class="android"><img src="img/android.png" class="and" /></a>
+        <div class="dwarrow" id="dwarrow">
+            <div class="dwarm dwaleft arrline"></div>
+            <div class="dwmid arrline"></div>
+            <div class="dwarm dwaright arrline"></div>
+        </div>
+        <div class="dwbotline arrline"></div>
     </div>
 
     <div class="menu" id="menu">
@@ -120,7 +124,18 @@
         <div class="mline" id="mline2"></div>
         <div class="mline" id="mline3"></div>
     </div>
-    <div class="sign">Mistrmochov</div>
+    <div class="sign" id="sign">Mistrmochov</div>
+    <div class="AboutPopup" id="AboutPopup">
+        <div class="AboutTitle">
+            <img src="img/logo.png" class="AboutLogo">
+            <div class="AboutTitleText">MyWaterland</div>
+        </div>
+        <div class="AboutApp AboutBlock" id="AboutApp">Simple and very minimal water tracking web app and android app. Track your water usage
+            with style!
+            Free and open source!
+        </div>
+        <div class="AboutAuthor AboutBlock" id="AboutAuthor">Hosted on Github - https://github.com/mywaterland/mywaterland.github.io</div>
+    </div>
     <script src="water.js"></script>
 </body>
 
