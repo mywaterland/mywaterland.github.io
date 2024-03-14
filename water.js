@@ -13,14 +13,16 @@ let pr = document.getElementById("pr");
 const parms = [pl, pr];
 let minus = document.getElementById("minus");
 let marm = document.getElementById("marm");
-let txt = document.querySelector(".txt");
+let txt = document.getElementById("txt");
 let x;
+let y;
 const head = document.querySelector(".head");
 let curcolor = "rgb(77, 134, 191)";
 let curcover = "rgb(132, 164, 197)";
 let nocolor = "rgb(31, 31, 31)";
-let bottle = document.querySelector(".bottle");
+let bottle = document.getElementById("bottle");
 let popup = document.querySelector(".popup");
+let t1 = document.getElementById("t1");
 let close = document.querySelector(".close");
 let apply = document.querySelector(".apply");
 let wc1 = document.querySelector(".wc1");
@@ -41,7 +43,8 @@ const backc = [bc1, bc2, bc3, bc4];
 let a1 = document.querySelector(".a1");
 let a2 = document.querySelector(".a2");
 let bot = document.querySelector(".bot");
-var clock = document.querySelector(".clock");
+const GlassArr = [a1, a2, bot];
+var clock = document.getElementById("clock");
 let buttons = document.getElementById("buttons");
 let menu = document.getElementById("menu");
 let menupic = document.getElementById("menupic");
@@ -52,6 +55,7 @@ const mlines = [mline, mline2, mline3];
 let about = document.getElementById("about");
 let custom = document.getElementById("custom");
 let bodybool = false;
+let aboutbool = false;
 const abouttop = window.getComputedStyle(about).top;
 const customtop = window.getComputedStyle(custom).top;
 let aboutgotop = "9.7%";
@@ -61,9 +65,14 @@ let comptop = "19.5%";
 let link = document.getElementById("link");
 let tline = document.getElementById("tline");
 let breset = document.getElementById("reset");
+let body = document.body;
+let sign = document.getElementById("sign");
+let AboutPopup = document.getElementById("AboutPopup");
+let AboutApp = document.getElementById("AboutApp");
+let AboutAuthor = document.getElementById("AboutAuthor");
 
-document.body.style.backgroundColor = nocolor;
-document.body.style.transform = "scale(0)";
+body.style.backgroundColor = nocolor;
+
 
 var storedData = localStorage.getItem('userData');
 var storedDataw6 = localStorage.getItem('userDataw6');
@@ -110,6 +119,7 @@ else {
     x = 0;
     txt.textContent = x + "ML";
 }
+
 if (storedDataw6) {
     w6.style.backgroundColor = storedDataw6;
 }
@@ -149,6 +159,24 @@ if (storedDataNo) {
 plus.style.borderColor = nocolor;
 minus.style.borderColor = nocolor;
 menupic.style.borderColor = "#f2f3f400";
+waters.forEach(item => {
+    item.style.opacity = "0";
+});
+GlassArr.forEach(item => {
+    item.style.opacity = "0";
+});
+txt.style.opacity = "0";
+parms.forEach(item => {
+    item.style.width = "0px";
+});
+pmid.style.height = "0px";
+plus.style.marginLeft = "0px";
+marm.style.width = "0px";
+clock.style.opacity = "0";
+menupic.style.opacity = "0";
+link.style.opacity = "0";
+sign.style.opacity = "0";
+body.style.pointerEvents = "none";
 
 if (x == 3000) {
     plus.style.pointerEvents = "none";
@@ -160,9 +188,9 @@ if (x == 3000) {
     pr.style.width = "0px";
     plus.style.marginLeft = "22px";
     marm.style.width = "0px";
-    plus.style.visibility = "collapse";
-    minus.style.visibility = "collapse";
-    breset.style.visibility = "visible";
+    plus.style.display = "none";
+    minus.style.display = "none";
+    breset.style.display = "block";
     breset.style.color = "#f2f3f4";
     breset.style.borderColor = "#f2f3f4";
     breset.style.pointerEvents = "all";
@@ -181,50 +209,217 @@ if (document.body.clientHeight <= 430) {
     aboutgotop = "13.7%";
 }
 
+
 this.addEventListener('load', function (event) {
-    const bodyanim = document.body.animate(
+    function SignLoad() {
+        const SignLoadAnim = sign.animate(
+            [
+                {
+                    opacity: "0"
+                },
+                {
+                    opacity: "1"
+                }
+            ],
+            {
+                duration: 200,
+                easing: "linear"
+            }
+        );
+        SignLoadAnim.addEventListener('finish', function (event) {
+            sign.style.opacity = "";
+            body.style.pointerEvents = "all";
+        });
+    }
+    function LinkLoad() {
+        const LinkLoadAnim = link.animate(
+            [
+                {
+                    opacity: "0"
+                },
+                {
+                    opacity: "1"
+                }
+            ],
+            {
+                duration: 200,
+                easing: "linear"
+            }
+        );
+        LinkLoadAnim.addEventListener('finish', function (event) {
+            link.style.opacity = "";
+            SignLoad();
+        })
+    }
+    function MenuLoad() {
+        const MenuLoadAnim = menupic.animate(
+            [
+                {
+                    opacity: "0"
+                },
+                {
+                    opacity: "1"
+                }
+            ],
+            {
+                duration: 200,
+                easing: "linear"
+            }
+        );
+        MenuLoadAnim.addEventListener('finish', function (event) {
+            menupic.style.opacity = "";
+            LinkLoad();
+        })
+    }
+    function ClockLoad() {
+        const ClockLoadAnim = clock.animate(
+            [
+                {
+                    opacity: "0"
+                },
+                {
+                    opacity: "1"
+                }
+            ],
+            {
+                duration: 200,
+                easing: "linear"
+            }
+        );
+        ClockLoadAnim.addEventListener('finish', function (event) {
+            clock.style.opacity = "";
+            MenuLoad();
+        });
+    }
+    function TxtLoad() {
+        const TxtLoadAnimation = txt.animate(
+            [
+                {
+                    opacity: "0"
+                },
+                {
+                    opacity: "1"
+                }
+            ],
+            {
+                duration: 300,
+                easing: "linear"
+            }
+        );
+        TxtLoadAnimation.addEventListener('finish', function (event) {
+            txt.style.opacity = "";
+            ClockLoad();
+        });
+    }
+    waters.forEach(item => {
+        const WaterLoadAnimation = item.animate(
+            [
+                {
+                    opacity: "0"
+                },
+                {
+                    opacity: "1"
+                }
+            ],
+            {
+                easing: "linear",
+                duration: 800
+            }
+        );
+        WaterLoadAnimation.addEventListener('finish', function (event) {
+            item.style.opacity = "";
+        });
+
+    });
+    GlassArr.forEach(item => {
+        const GlassLoadAnimation = item.animate(
+            [
+                {
+                    opacity: "0"
+                },
+                {
+                    opacity: "1"
+                }
+            ],
+            {
+                duration: 800,
+                easing: "linear"
+            }
+        )
+        GlassLoadAnimation.addEventListener('finish', function (event) {
+            item.style.opacity = "";
+            TxtLoad();
+        });
+    });
+    parms.forEach(item => {
+        const PlusArmsLoadAnimation = item.animate(
+            [
+                {
+                    width: "0px"
+                },
+                {
+                    width: "22px"
+                },
+            ],
+            {
+                duration: 400,
+                easing: "ease-out"
+            }
+        );
+        PlusArmsLoadAnimation.addEventListener('finish', function (event) {
+            item.style.width = "22px";
+        });
+        const PlusMarginFix = plus.animate(
+            [
+                {
+                    marginLeft: "22px"
+                },
+                {
+                    marginLeft: "0px"
+                },
+            ],
+            {
+                duration: 400,
+                easing: "ease-out"
+            }
+        );
+        PlusMarginFix.addEventListener('finish', function (event) {
+            plus.style.marginLeft = "0px";
+        });
+    });
+    const PlusMidLoadAnimation = pmid.animate(
         [
             {
-                transform: "scale(0)"
+                height: "0px"
             },
             {
-                transform: "scale(0.1)"
-            },
-            {
-                transform: "scale(0.2)"
-            },
-            {
-                transform: "scale(0.3)"
-            },
-            {
-                transform: "scale(0.4)"
-            },
-            {
-                transform: "scale(0.5)"
-            },
-            {
-                transform: "scale(0.6)"
-            },
-            {
-                transform: "scale(0.7)"
-            },
-            {
-                transform: "scale(0.8)"
-            },
-            {
-                transform: "scale(0.9)"
-            },
-            {
-                transform: "scale(1)"
+                height: "50px"
             },
         ],
         {
-            duration: 300,
-            easing: "linear",
+            duration: 400,
+            easing: "ease-out"
         }
     );
-    bodyanim.addEventListener('finish', function (event) {
-        document.body.style.transform = "scale(1)";
+    PlusMidLoadAnimation.addEventListener('finish', function (event) {
+        pmid.style.height = "50px";
+    });
+    const MinusLoadAnimation = marm.animate(
+        [
+            {
+                width: "0px"
+            },
+            {
+                width: "50px"
+            }
+        ],
+        {
+            duration: 400,
+            easing: "ease-out"
+        }
+    );
+    MinusLoadAnimation.addEventListener('finish', function (event) {
+        marm.style.width = "50px";
     });
 });
 
@@ -504,7 +699,14 @@ function resetout() {
 }
 function ResetGo() {
     breset.style.pointerEvents = "none";
-    x = 0;
+    function updateXreset() {
+        x -= 20;
+        txt.textContent = x + "ML";
+        localsave();
+        if (x == 0) { window.clearInterval(xResetInterval); }
+    }
+    updateXreset();
+    let xResetInterval = setInterval(updateXreset, 3);
     waters.forEach(item => {
         const wdown = item.animate(
             [
@@ -523,7 +725,6 @@ function ResetGo() {
         wdown.addEventListener('finish', function (event) {
             item.style.backgroundColor = nocolor;
             localsave();
-            txt.textContent = x + "ML";
         });
     });
     function tlinereset() {
@@ -660,9 +861,9 @@ function ResetGo() {
     resetup.addEventListener('finish', function (event) {
         breset.style.color = "#f2f3f400";
         breset.style.borderColor = "#f2f3f400";
-        breset.style.visibility = "collapse";
-        plus.style.visibility = "visible";
-        minus.style.visibility = "visible";
+        breset.style.display = "none";
+        plus.style.display = "flex";
+        minus.style.display = "flex";
         tlinereset();
         pmidreset();
         minusreset();
@@ -785,7 +986,7 @@ function popupclose() {
 }
 
 function GetReset() {
-    breset.style.visibility = "visible";
+    breset.style.display = "block";
     const resetup = breset.animate(
         [
             {
@@ -863,8 +1064,8 @@ function Completion() {
             );
             pmidgoa.addEventListener('finish', function (event) {
                 pmid.style.height = "0px";
-                plus.style.visibility = "collapse";
-                minus.style.visibility = "collapse";
+                plus.style.display = "none";
+                minus.style.display = "none";
                 GetReset();
             });
         }
@@ -933,7 +1134,16 @@ function plusFun() {
         }
         if (window.getComputedStyle(waters[i]).backgroundColor === nocolor) {
             plus.style.pointerEvents = "none";
-            x += 500;
+            function updateXplus() {
+                x += 10;
+                y += 10;
+                txt.textContent = x + "ML";
+                localsave();
+                if (y == 500) { window.clearInterval(xPlusInterval); }
+            }
+            updateXplus();
+            let xPlusInterval = setInterval(updateXplus, 1);
+
             waters[i].style.height = "0px";
             waters[i].style.backgroundColor = curcolor;
             const wplus = waters[i].animate(
@@ -964,7 +1174,6 @@ function plusFun() {
                 Completion();
             });
             mesplus();
-            txt.textContent = x + "ML";
             localsave();
             break;
         }
@@ -975,7 +1184,15 @@ function minusFun() {
         if (x == 0) { break; }
         if (window.getComputedStyle(waters[i]).backgroundColor === curcolor) {
             minus.style.pointerEvents = "none";
-            x -= 500;
+            function updateXminus() {
+                x -= 10;
+                y -= 10;
+                txt.textContent = x + "ML";
+                localsave();
+                if (y == 0) { window.clearInterval(xMinusInterval); }
+            }
+            updateXminus();
+            let xMinusInterval = setInterval(updateXminus, 1);
             const wform = waters[i].animate(
                 [
                     {
@@ -1190,32 +1407,119 @@ function menupicOut() {
     });
 }
 
+function LinkRedirect() {
+    window.open("https://github.com/mywaterland/mywaterland.github.io", "_blank");
+}
+
+function AboutPopupGetLoad() {
+    AboutPopup.style.visibility = "visible";
+    function AboutPopupLoad() {
+        const AboutPopupLoadAnim = AboutPopup.animate(
+            [
+                {
+                    height: "0vh",
+                    marginTop: "25vh"
+                },
+                {
+                    height: "50vh",
+                    marginTop: "0vh"
+                }
+            ],
+            {
+                duration: 200,
+                easing: "linear"
+            }
+        );
+        AboutPopupLoadAnim.addEventListener('finish', function (event) {
+            AboutPopup.style.height = "50vh";
+            AboutPopup.style.marginTop = "0vh";
+            aboutbool = true;
+        });
+    }
+    const AboutPopupBorderAnim = AboutPopup.animate(
+        [
+            {
+                borderWidth: "0px"
+            },
+            {
+                borderWidth: "3px"
+            }
+        ],
+        {
+            duration: 100,
+            easing: "linear"
+        }
+    );
+    AboutPopupBorderAnim.addEventListener('finish', function (event) {
+        AboutPopup.style.borderWidth = "3px";
+        AboutPopupLoad();
+    });
+}
+function AboutPopupGetClose() {
+    aboutbool = false;
+    function AboutPopupBorderClose() {
+        const AboutPopupBorderAnim = AboutPopup.animate(
+            [
+                {
+                    borderWidth: "3px"
+                },
+                {
+                    borderWidth: "0px"
+                }
+            ],
+            {
+                duration: 100,
+                easing: "linear"
+            }
+        );
+        AboutPopupBorderAnim.addEventListener('finish', function (event) {
+            AboutPopup.style.borderWidth = "0px";
+            AboutPopup.style.visibility = "hidden";
+        });
+    }
+    const AboutPopupCloseAnim = AboutPopup.animate(
+        [
+            {
+                height: "50vh",
+                marginTop: "0vh"
+            },
+            {
+                height: "0vh",
+                marginTop: "25vh"
+            }
+        ],
+        {
+            duration: 200,
+            easing: "linear"
+        }
+    );
+    AboutPopupCloseAnim.addEventListener('finish', function (event) {
+        AboutPopup.style.height = "0vh";
+        AboutPopup.style.marginTop = "25vh";
+        AboutPopupBorderClose();
+    });
+}
+
 var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 if (isMobile) {
-    close.addEventListener('touchstart', function (event) {
-        popupclose();
-    });
+    AboutPopup.style.width = "70vw";
+    AboutPopup.style.left = "15%";
+    AboutApp.style.width = "60vw";
+    AboutAuthor.style.width = "60vw";
+    close.addEventListener('touchstart', popupclose);
 
     plus.addEventListener('touchstart', function (event) {
+        y = 0;
         plusover();
         plusFun();
-        if (about.style.top == "9.7%") {
-            menuBack();
-        }
     });
-    plus.addEventListener('touchend', function (event) {
-        plusout();
-    });
+    plus.addEventListener('touchend', plusout);
     minus.addEventListener('touchstart', function (event) {
+        y = 500;
         minusover();
         minusFun();
-        if (about.style.top == "9.7%") {
-            menuBack();
-        }
     });
-    minus.addEventListener('touchend', function (event) {
-        minusout();
-    });
+    minus.addEventListener('touchend', minusout);
     menupic.addEventListener('touchstart', function (event) {
         menupicOver();
         menuGo();
@@ -1223,6 +1527,8 @@ if (isMobile) {
     menupic.addEventListener('touchend', menupicOut);
     about.addEventListener('touchstart', function (event) {
         bodybool = false;
+        AboutPopupGetLoad();
+        menuBack();
     });
     about.addEventListener('touchend', function (event) {
         bodybool = true;
@@ -1234,35 +1540,31 @@ if (isMobile) {
     custom.addEventListener('touchend', function (event) {
         bodybool = true;
     });
-    document.addEventListener('touchstart', function (event) {
+    AboutPopup.addEventListener('touchstart', function (event) {
+        aboutbool = false;
+    });
+    AboutPopup.addEventListener('touchend', function (event) {
+        aboutbool = true;
+    });
+    body.addEventListener('touchstart', function (event) {
         if (bodybool == true) {
             menuBack();
         }
-    });
-    bottle.addEventListener('touchstart', function (event) {
-        if (about.style.top == aboutgotop) {
-            menuBack();
-        }
-    });
-    txt.addEventListener('touchstart', function (event) {
-        if (about.style.top == aboutgotop) {
-            menuBack();
-        }
-    });
-    clock.addEventListener('touchstart', function (event) {
-        if (about.style.top == aboutgotop) {
-            menuBack();
+        if (aboutbool == true) {
+            AboutPopupGetClose();
         }
     });
     breset.addEventListener('touchstart', function (event) {
-        if (about.style.top == aboutgotop) {
-            menuBack();
-        }
         resetover();
         ResetGo();
     });
     breset.addEventListener('touchend', resetout);
+    link.addEventListener('touchstart', LinkRedirect);
 } else {
+    AboutPopup.style.width = "18vw";
+    AboutPopup.style.left = "41%";
+    AboutApp.style.width = "14vw";
+    AboutAuthor.style.width = "14vw";
     close.addEventListener('mousedown', function (event) {
         popupclose();
     });
@@ -1281,17 +1583,13 @@ if (isMobile) {
     });
 
     plus.addEventListener('mousedown', function (event) {
+        y = 0;
         plusFun();
-        if (about.style.top == "9.7%") {
-            menuBack();
-        }
     });
 
     minus.addEventListener('mousedown', function (event) {
+        y = 500;
         minusFun();
-        if (about.style.top == "9.7%") {
-            menuBack();
-        }
     });
 
     menupic.addEventListener('mouseover', menupicOver);
@@ -1299,6 +1597,8 @@ if (isMobile) {
     menupic.addEventListener('mousedown', menuGo);
     about.addEventListener('mousedown', function (event) {
         bodybool = false;
+        AboutPopupGetLoad();
+        menuBack();
     });
     about.addEventListener('mouseout', function (event) {
         bodybool = true;
@@ -1310,34 +1610,24 @@ if (isMobile) {
     custom.addEventListener('mouseout', function (event) {
         bodybool = true;
     });
-    document.addEventListener('mousedown', function (event) {
+    AboutPopup.addEventListener('mousedown', function (event) {
+        aboutbool = false;
+    });
+    AboutPopup.addEventListener('mouseout', function (event) {
+        aboutbool = true;
+    });
+    body.addEventListener('mousedown', function (event) {
         if (bodybool == true) {
             menuBack();
         }
-    });
-    bottle.addEventListener('mousedown', function (event) {
-        if (about.style.top == aboutgotop) {
-            menuBack();
-        }
-    });
-    txt.addEventListener('mousedown', function (event) {
-        if (about.style.top == aboutgotop) {
-            menuBack();
-        }
-    });
-    clock.addEventListener('mousedown', function (event) {
-        if (about.style.top == aboutgotop) {
-            menuBack();
+        if (aboutbool == true) {
+            AboutPopupGetClose();
         }
     });
     breset.addEventListener('mouseover', resetover);
     breset.addEventListener('mouseout', resetout);
-    breset.addEventListener('mousedown', function (event) {
-        if (about.style.top == aboutgotop) {
-            menuBack();
-        }
-        ResetGo();
-    });
+    breset.addEventListener('mousedown', ResetGo);
+    link.addEventListener('mousedown', LinkRedirect);
 }
 
 
