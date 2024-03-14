@@ -1139,7 +1139,10 @@ function plusFun() {
                 y += 10;
                 txt.textContent = x + "ML";
                 localsave();
-                if (y == 500) { window.clearInterval(xPlusInterval); }
+                if (y == 500) {
+                    window.clearInterval(xPlusInterval);
+                    plus.style.pointerEvents = "all";
+                }
             }
             updateXplus();
             let xPlusInterval = setInterval(updateXplus, 1);
@@ -1163,14 +1166,12 @@ function plusFun() {
             wplus.addEventListener('finish', function (event) {
                 waters[i].style.height = "50px";
                 waters[i].style.backgroundColor = curcolor;
-                plus.style.pointerEvents = "all";
                 Completion();
             });
 
             wplus.addEventListener('cancel', function (event) {
                 waters[i].style.height = "50px";
                 waters[i].style.backgroundColor = curcolor;
-                plus.style.pointerEvents = "all";
                 Completion();
             });
             mesplus();
@@ -1189,7 +1190,10 @@ function minusFun() {
                 y -= 10;
                 txt.textContent = x + "ML";
                 localsave();
-                if (y == 0) { window.clearInterval(xMinusInterval); }
+                if (y == 0) {
+                    window.clearInterval(xMinusInterval);
+                    minus.style.pointerEvents = "all";
+                }
             }
             updateXminus();
             let xMinusInterval = setInterval(updateXminus, 1);
@@ -1209,12 +1213,10 @@ function minusFun() {
             );
             wform.addEventListener('finish', function (event) {
                 waters[i].style.backgroundColor = nocolor;
-                minus.style.pointerEvents = "all";
                 localsave();
             });
             wform.addEventListener('cancel', function (event) {
                 waters[i].style.backgroundColor = nocolor;
-                minus.style.pointerEvents = "all";
                 localsave();
             });
             mesminus();
