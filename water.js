@@ -1127,13 +1127,64 @@ function Completion() {
 
 }
 
+function plusHop() {
+    plus.style.position = "relative";
+    const plusHopAnim = plus.animate(
+        [
+            {
+                top: "0px"
+            },
+            {
+                top: "-12px"
+            },
+            {
+                top: "0px"
+            }
+        ],
+        {
+            duration: 200,
+            easing: "ease-out"
+        }
+    );
+    plusHopAnim.addEventListener('finish', function (event) {
+        plus.style.position = "";
+    });
+}
+function minusHop() {
+    minus.style.position = "relative";
+    const minusHopAnim = minus.animate(
+        [
+            {
+                top: "0px"
+            },
+            {
+                top: "-12px"
+            },
+            {
+                top: "0px"
+            }
+        ],
+        {
+            duration: 200,
+            easing: "ease-out"
+        }
+    );
+    minusHopAnim.addEventListener('finish', function (event) {
+        minus.style.position = "";
+    });
+}
+
+
 function plusFun() {
+    plus.style.pointerEvents = "none";
+    minus.style.pointerEvents = "none";
     for (let i = 5; i >= 0; i -= 1) {
         if (x == 3000) {
+            plus.style.pointerEvents = "all";
+            minus.style.pointerEvents = "all";
             break;
         }
         if (window.getComputedStyle(waters[i]).backgroundColor === nocolor) {
-            plus.style.pointerEvents = "none";
             function updateXplus() {
                 x += 10;
                 y += 10;
@@ -1142,10 +1193,14 @@ function plusFun() {
                 if (y == 500) {
                     window.clearInterval(xPlusInterval);
                     plus.style.pointerEvents = "all";
+                    minus.style.pointerEvents = "all";
+                    Completion();
                 }
             }
             updateXplus();
-            let xPlusInterval = setInterval(updateXplus, 1);
+            let xPlusInterval = setInterval(updateXplus, 5);
+
+            plusHop();
 
             waters[i].style.height = "0px";
             waters[i].style.backgroundColor = curcolor;
@@ -1156,23 +1211,21 @@ function plusFun() {
                     },
                     {
                         height: "50px"
-                    },
+                    }
                 ],
                 {
                     duration: 200,
-                    easing: "linear",
+                    easing: "linear"
                 }
             );
             wplus.addEventListener('finish', function (event) {
                 waters[i].style.height = "50px";
                 waters[i].style.backgroundColor = curcolor;
-                Completion();
             });
 
             wplus.addEventListener('cancel', function (event) {
                 waters[i].style.height = "50px";
                 waters[i].style.backgroundColor = curcolor;
-                Completion();
             });
             mesplus();
             localsave();
@@ -1181,10 +1234,15 @@ function plusFun() {
     }
 }
 function minusFun() {
+    minus.style.pointerEvents = "none";
+    plus.style.pointerEvents = "none";
     for (let i = 0; 0 <= 5; i += 1) {
-        if (x == 0) { break; }
+        if (x == 0) {
+            minus.style.pointerEvents = "all";
+            plus.style.pointerEvents = "all";
+            break;
+        }
         if (window.getComputedStyle(waters[i]).backgroundColor === curcolor) {
-            minus.style.pointerEvents = "none";
             function updateXminus() {
                 x -= 10;
                 y -= 10;
@@ -1193,10 +1251,12 @@ function minusFun() {
                 if (y == 0) {
                     window.clearInterval(xMinusInterval);
                     minus.style.pointerEvents = "all";
+                    plus.style.pointerEvents = "all";
                 }
             }
             updateXminus();
-            let xMinusInterval = setInterval(updateXminus, 1);
+            let xMinusInterval = setInterval(updateXminus, 5);
+            minusHop();
             const wform = waters[i].animate(
                 [
                     {
@@ -1204,11 +1264,11 @@ function minusFun() {
                     },
                     {
                         height: "0px"
-                    },
+                    }
                 ],
                 {
                     duration: 200,
-                    easing: "linear",
+                    easing: "linear"
                 }
             );
             wform.addEventListener('finish', function (event) {
@@ -1220,7 +1280,6 @@ function minusFun() {
                 localsave();
             });
             mesminus();
-            txt.textContent = x + "ML";
             break;
 
         }
@@ -1502,6 +1561,70 @@ function AboutPopupGetClose() {
     });
 }
 
+function linkOver() {
+    const linkOverAnim = link.animate(
+        [
+            {
+                borderColor: "#f2f3f400"
+            },
+            {
+                borderColor: "#f2f3f4"
+            }
+        ],
+        {
+            easing: "linear",
+            duration: 300
+        }
+    );
+    linkOverAnim.addEventListener('finish', function (event) {
+        link.style.borderColor = "#f2f3f4";
+    });
+}
+function linkOut() {
+    const linkOutAnim = link.animate(
+        [
+            {
+                borderColor: "#f2f3f4"
+            },
+            {
+                borderColor: "#f2f3f400"
+            }
+        ],
+        {
+            easing: "linear",
+            duration: 300
+        }
+    );
+    linkOutAnim.addEventListener('finish', function (event) {
+        link.style.borderColor = "#f2f3f400";
+    });
+}
+
+function linkHop() {
+    link.style.pointerEvents = "none";
+    const linkHopAnim = link.animate(
+        [
+            {
+                top: "4.5%"
+            },
+            {
+                top: "2.5%"
+            },
+            {
+                top: "4.5%"
+            }
+        ],
+        {
+            duration: 200,
+            easing: "ease-out"
+        }
+    );
+    linkHopAnim.addEventListener('finish', function (event) {
+        link.style.pointerEvents = "all";
+        LinkRedirect();
+    });
+}
+
 var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 if (isMobile) {
     AboutPopup.style.width = "70vw";
@@ -1561,7 +1684,8 @@ if (isMobile) {
         ResetGo();
     });
     breset.addEventListener('touchend', resetout);
-    link.addEventListener('touchstart', LinkRedirect);
+    link.addEventListener('touchstart', linkOver, linkHop);
+    link.addEventListener('touchend', linkOut);
 } else {
     AboutPopup.style.width = "18vw";
     AboutPopup.style.left = "41%";
@@ -1583,6 +1707,8 @@ if (isMobile) {
     minus.addEventListener('mouseout', function (event) {
         minusout();
     });
+
+
 
     plus.addEventListener('mousedown', function (event) {
         y = 0;
@@ -1629,649 +1755,654 @@ if (isMobile) {
     breset.addEventListener('mouseover', resetover);
     breset.addEventListener('mouseout', resetout);
     breset.addEventListener('mousedown', ResetGo);
-    link.addEventListener('mousedown', LinkRedirect);
+    link.addEventListener('mouseover', linkOver);
+    link.addEventListener('mouseout', linkOut);
+    link.addEventListener('mousedown', linkHop);
 }
 
+function ColorChangerListener() {
+    apply.addEventListener('mousedown', function (event) {
+        waterc.forEach(item => {
+            if (item.style.border === "4px solid rgb(165, 165, 165)") {
+                waters.forEach(item2 => {
+                    if (item2.style.backgroundColor === curcolor) {
+                        item2.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
+                    }
 
-apply.addEventListener('mousedown', function (event) {
-    waterc.forEach(item => {
-        if (item.style.border === "4px solid rgb(165, 165, 165)") {
-            waters.forEach(item2 => {
-                if (item2.style.backgroundColor === curcolor) {
-                    item2.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
-                }
+                });
+                curcolor = window.getComputedStyle(item).backgroundColor;
 
-            });
-            curcolor = window.getComputedStyle(item).backgroundColor;
+                var inputCur = curcolor;
+                var inputW6 = w6.style.backgroundColor;
+                var inputW5 = w5.style.backgroundColor;
+                var inputW4 = w4.style.backgroundColor;
+                var inputW3 = w3.style.backgroundColor;
+                var inputW2 = w2.style.backgroundColor;
+                var inputW1 = w1.style.backgroundColor;
+                localStorage.setItem('userCur', inputCur);
+                localStorage.setItem('userDataw6', inputW6);
+                localStorage.setItem('userDataw5', inputW5);
+                localStorage.setItem('userDataw4', inputW4);
+                localStorage.setItem('userDataw3', inputW3);
+                localStorage.setItem('userDataw2', inputW2);
+                localStorage.setItem('userDataw1', inputW1);
+            }
+        });
+        glassc.forEach(item => {
+            if (item.style.border === "4px solid rgb(165, 165, 165)") {
+                a1.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
+                a2.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
+                bot.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
 
-            var inputCur = curcolor;
-            var inputW6 = w6.style.backgroundColor;
-            var inputW5 = w5.style.backgroundColor;
-            var inputW4 = w4.style.backgroundColor;
-            var inputW3 = w3.style.backgroundColor;
-            var inputW2 = w2.style.backgroundColor;
-            var inputW1 = w1.style.backgroundColor;
-            localStorage.setItem('userCur', inputCur);
-            localStorage.setItem('userDataw6', inputW6);
-            localStorage.setItem('userDataw5', inputW5);
-            localStorage.setItem('userDataw4', inputW4);
-            localStorage.setItem('userDataw3', inputW3);
-            localStorage.setItem('userDataw2', inputW2);
-            localStorage.setItem('userDataw1', inputW1);
-        }
+                var inputA1 = a1.style.backgroundColor;
+                var inputA2 = a2.style.backgroundColor;
+                var inputBot = bot.style.backgroundColor;
+                localStorage.setItem('userA1', inputA1);
+                localStorage.setItem('userA2', inputA2);
+                localStorage.setItem('userBot', inputBot);
+            }
+        });
+        backc.forEach(item => {
+            if (item.style.border === "4px solid rgb(165, 165, 165)") {
+                document.body.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
+                nocolor = window.getComputedStyle(item).backgroundColor;
+                waters.forEach(item2 => {
+                    if (item2.style.backgroundColor !== curcolor) {
+                        item2.style.backgroundColor = nocolor;
+                    }
+                });
+
+                plus.style.borderColor = nocolor;
+                minus.style.borderColor = nocolor;
+                var inputBack = document.body.style.backgroundColor;
+                var inputNo = nocolor;
+                var inputW6 = w6.style.backgroundColor;
+                var inputW5 = w5.style.backgroundColor;
+                var inputW4 = w4.style.backgroundColor;
+                var inputW3 = w3.style.backgroundColor;
+                var inputW2 = w2.style.backgroundColor;
+                var inputW1 = w1.style.backgroundColor;
+                localStorage.setItem('userBack', inputBack);
+                localStorage.setItem('userNo', inputNo);
+                localStorage.setItem('userDataw6', inputW6);
+                localStorage.setItem('userDataw5', inputW5);
+                localStorage.setItem('userDataw4', inputW4);
+                localStorage.setItem('userDataw3', inputW3);
+                localStorage.setItem('userDataw2', inputW2);
+                localStorage.setItem('userDataw1', inputW1);
+            }
+        });
     });
-    glassc.forEach(item => {
-        if (item.style.border === "4px solid rgb(165, 165, 165)") {
-            a1.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
-            a2.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
-            bot.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
 
-            var inputA1 = a1.style.backgroundColor;
-            var inputA2 = a2.style.backgroundColor;
-            var inputBot = bot.style.backgroundColor;
-            localStorage.setItem('userA1', inputA1);
-            localStorage.setItem('userA2', inputA2);
-            localStorage.setItem('userBot', inputBot);
+    wc1.addEventListener('mousedown', function (event) {
+        if (wc1.style.border === "4px solid rgb(165, 165, 165)") {
+            wc1.style.border = "none";
+            const pixelValue = window.getComputedStyle(wc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc1.style.height = intValue2 + "px";
         }
-    });
-    backc.forEach(item => {
-        if (item.style.border === "4px solid rgb(165, 165, 165)") {
-            document.body.style.backgroundColor = window.getComputedStyle(item).backgroundColor;
-            nocolor = window.getComputedStyle(item).backgroundColor;
-            waters.forEach(item2 => {
-                if (item2.style.backgroundColor !== curcolor) {
-                    item2.style.backgroundColor = nocolor;
-                }
-            });
-
-            plus.style.borderColor = nocolor;
-            minus.style.borderColor = nocolor;
-            var inputBack = document.body.style.backgroundColor;
-            var inputNo = nocolor;
-            var inputW6 = w6.style.backgroundColor;
-            var inputW5 = w5.style.backgroundColor;
-            var inputW4 = w4.style.backgroundColor;
-            var inputW3 = w3.style.backgroundColor;
-            var inputW2 = w2.style.backgroundColor;
-            var inputW1 = w1.style.backgroundColor;
-            localStorage.setItem('userBack', inputBack);
-            localStorage.setItem('userNo', inputNo);
-            localStorage.setItem('userDataw6', inputW6);
-            localStorage.setItem('userDataw5', inputW5);
-            localStorage.setItem('userDataw4', inputW4);
-            localStorage.setItem('userDataw3', inputW3);
-            localStorage.setItem('userDataw2', inputW2);
-            localStorage.setItem('userDataw1', inputW1);
+        else {
+            wc1.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(wc1).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            wc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            wc1.style.height = intValue2 + "px";
         }
-    });
-});
-
-wc1.addEventListener('mousedown', function (event) {
-    if (wc1.style.border === "4px solid rgb(165, 165, 165)") {
-        wc1.style.border = "none";
-        const pixelValue = window.getComputedStyle(wc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc1.style.height = intValue2 + "px";
-    }
-    else {
-        wc1.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(wc1).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        wc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        wc1.style.height = intValue2 + "px";
-    }
-    if (wc2.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc2.style.height = intValue2 + "px";
-    }
-    else if (wc3.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc3.style.height = intValue2 + "px";
-    }
-    else if (wc4.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc4.style.height = intValue2 + "px";
-    }
-    wc2.style.border = "none";
-    wc3.style.border = "none";
-    wc4.style.border = "none";
-});
-wc2.addEventListener('mousedown', function (event) {
-    if (wc2.style.border === "4px solid rgb(165, 165, 165)") {
+        if (wc2.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc2.style.height = intValue2 + "px";
+        }
+        else if (wc3.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc3.style.height = intValue2 + "px";
+        }
+        else if (wc4.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc4.style.height = intValue2 + "px";
+        }
         wc2.style.border = "none";
-        const pixelValue = window.getComputedStyle(wc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc2.style.height = intValue2 + "px";
-    }
-    else {
-        wc2.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(wc2).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        wc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        wc2.style.height = intValue2 + "px";
-    }
-    if (wc1.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc1.style.height = intValue2 + "px";
-    }
-    else if (wc3.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc3.style.height = intValue2 + "px";
-    }
-    else if (wc4.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc4.style.height = intValue2 + "px";
-    }
-    wc1.style.border = "none";
-    wc3.style.border = "none";
-    wc4.style.border = "none";
-});
-wc3.addEventListener('mousedown', function (event) {
-    if (wc3.style.border === "4px solid rgb(165, 165, 165)") {
         wc3.style.border = "none";
-        const pixelValue = window.getComputedStyle(wc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc3.style.height = intValue2 + "px";
-    }
-    else {
-        wc3.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(wc3).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        wc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        wc3.style.height = intValue2 + "px";
-    }
-    if (wc1.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc1.style.height = intValue2 + "px";
-    }
-    else if (wc2.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc2.style.height = intValue2 + "px";
-    }
-    else if (wc4.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc4.style.height = intValue2 + "px";
-    }
-    wc1.style.border = "none";
-    wc2.style.border = "none";
-    wc4.style.border = "none";
-});
-wc4.addEventListener('mousedown', function (event) {
-    if (wc4.style.border === "4px solid rgb(165, 165, 165)") {
         wc4.style.border = "none";
-        const pixelValue = window.getComputedStyle(wc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc4.style.height = intValue2 + "px";
-    }
-    else {
-        wc4.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(wc4).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        wc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        wc4.style.height = intValue2 + "px";
-    }
-    if (wc1.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc1.style.height = intValue2 + "px";
-    }
-    else if (wc2.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc2.style.height = intValue2 + "px";
-    }
-    else if (wc3.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(wc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        wc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(wc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        wc3.style.height = intValue2 + "px";
-    }
-    wc1.style.border = "none";
-    wc2.style.border = "none";
-    wc3.style.border = "none";
-});
+    });
+    wc2.addEventListener('mousedown', function (event) {
+        if (wc2.style.border === "4px solid rgb(165, 165, 165)") {
+            wc2.style.border = "none";
+            const pixelValue = window.getComputedStyle(wc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc2.style.height = intValue2 + "px";
+        }
+        else {
+            wc2.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(wc2).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            wc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            wc2.style.height = intValue2 + "px";
+        }
+        if (wc1.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc1.style.height = intValue2 + "px";
+        }
+        else if (wc3.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc3.style.height = intValue2 + "px";
+        }
+        else if (wc4.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc4.style.height = intValue2 + "px";
+        }
+        wc1.style.border = "none";
+        wc3.style.border = "none";
+        wc4.style.border = "none";
+    });
+    wc3.addEventListener('mousedown', function (event) {
+        if (wc3.style.border === "4px solid rgb(165, 165, 165)") {
+            wc3.style.border = "none";
+            const pixelValue = window.getComputedStyle(wc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc3.style.height = intValue2 + "px";
+        }
+        else {
+            wc3.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(wc3).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            wc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            wc3.style.height = intValue2 + "px";
+        }
+        if (wc1.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc1.style.height = intValue2 + "px";
+        }
+        else if (wc2.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc2.style.height = intValue2 + "px";
+        }
+        else if (wc4.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc4.style.height = intValue2 + "px";
+        }
+        wc1.style.border = "none";
+        wc2.style.border = "none";
+        wc4.style.border = "none";
+    });
+    wc4.addEventListener('mousedown', function (event) {
+        if (wc4.style.border === "4px solid rgb(165, 165, 165)") {
+            wc4.style.border = "none";
+            const pixelValue = window.getComputedStyle(wc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc4.style.height = intValue2 + "px";
+        }
+        else {
+            wc4.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(wc4).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            wc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            wc4.style.height = intValue2 + "px";
+        }
+        if (wc1.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc1.style.height = intValue2 + "px";
+        }
+        else if (wc2.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc2.style.height = intValue2 + "px";
+        }
+        else if (wc3.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(wc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            wc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(wc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            wc3.style.height = intValue2 + "px";
+        }
+        wc1.style.border = "none";
+        wc2.style.border = "none";
+        wc3.style.border = "none";
+    });
 
-gc1.addEventListener('mousedown', function (event) {
-    if (gc1.style.border === "4px solid rgb(165, 165, 165)") {
-        gc1.style.border = "none";
-        const pixelValue = window.getComputedStyle(gc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc1.style.height = intValue2 + "px";
-    }
-    else {
-        gc1.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(gc1).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        gc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        gc1.style.height = intValue2 + "px";
-    }
-    if (gc2.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc2.style.height = intValue2 + "px";
-    }
-    else if (gc3.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc3.style.height = intValue2 + "px";
-    }
-    else if (gc4.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc4.style.height = intValue2 + "px";
-    }
-    gc2.style.border = "none";
-    gc3.style.border = "none";
-    gc4.style.border = "none";
-});
-gc2.addEventListener('mousedown', function (event) {
-    if (gc2.style.border === "4px solid rgb(165, 165, 165)") {
+    gc1.addEventListener('mousedown', function (event) {
+        if (gc1.style.border === "4px solid rgb(165, 165, 165)") {
+            gc1.style.border = "none";
+            const pixelValue = window.getComputedStyle(gc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc1.style.height = intValue2 + "px";
+        }
+        else {
+            gc1.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(gc1).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            gc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            gc1.style.height = intValue2 + "px";
+        }
+        if (gc2.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc2.style.height = intValue2 + "px";
+        }
+        else if (gc3.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc3.style.height = intValue2 + "px";
+        }
+        else if (gc4.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc4.style.height = intValue2 + "px";
+        }
         gc2.style.border = "none";
-        const pixelValue = window.getComputedStyle(gc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc2.style.height = intValue2 + "px";
-    }
-    else {
-        gc2.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(gc2).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        gc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        gc2.style.height = intValue2 + "px";
-    }
-    if (gc1.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc1.style.height = intValue2 + "px";
-    }
-    else if (gc3.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc3.style.height = intValue2 + "px";
-    }
-    else if (gc4.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc4.style.height = intValue2 + "px";
-    }
-    gc1.style.border = "none";
-    gc3.style.border = "none";
-    gc4.style.border = "none";
-});
-gc3.addEventListener('mousedown', function (event) {
-    if (gc3.style.border === "4px solid rgb(165, 165, 165)") {
         gc3.style.border = "none";
-        const pixelValue = window.getComputedStyle(gc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc3.style.height = intValue2 + "px";
-    }
-    else {
-        gc3.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(gc3).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        gc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        gc3.style.height = intValue2 + "px";
-    }
-    if (gc1.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc1.style.height = intValue2 + "px";
-    }
-    else if (gc2.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc2.style.height = intValue2 + "px";
-    }
-    else if (gc4.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc4.style.height = intValue2 + "px";
-    }
-    gc1.style.border = "none";
-    gc2.style.border = "none";
-    gc4.style.border = "none";
-});
-gc4.addEventListener('mousedown', function (event) {
-    if (gc4.style.border === "4px solid rgb(165, 165, 165)") {
         gc4.style.border = "none";
-        const pixelValue = window.getComputedStyle(gc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc4.style.height = intValue2 + "px";
-    }
-    else {
-        gc4.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(gc4).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        gc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        gc4.style.height = intValue2 + "px";
-    }
-    if (gc1.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc1.style.height = intValue2 + "px";
-    }
-    else if (gc2.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc2.style.height = intValue2 + "px";
-    }
-    else if (gc3.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(gc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        gc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(gc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        gc3.style.height = intValue2 + "px";
-    }
-    gc1.style.border = "none";
-    gc2.style.border = "none";
-    gc3.style.border = "none";
-});
+    });
+    gc2.addEventListener('mousedown', function (event) {
+        if (gc2.style.border === "4px solid rgb(165, 165, 165)") {
+            gc2.style.border = "none";
+            const pixelValue = window.getComputedStyle(gc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc2.style.height = intValue2 + "px";
+        }
+        else {
+            gc2.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(gc2).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            gc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            gc2.style.height = intValue2 + "px";
+        }
+        if (gc1.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc1.style.height = intValue2 + "px";
+        }
+        else if (gc3.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc3.style.height = intValue2 + "px";
+        }
+        else if (gc4.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc4.style.height = intValue2 + "px";
+        }
+        gc1.style.border = "none";
+        gc3.style.border = "none";
+        gc4.style.border = "none";
+    });
+    gc3.addEventListener('mousedown', function (event) {
+        if (gc3.style.border === "4px solid rgb(165, 165, 165)") {
+            gc3.style.border = "none";
+            const pixelValue = window.getComputedStyle(gc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc3.style.height = intValue2 + "px";
+        }
+        else {
+            gc3.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(gc3).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            gc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            gc3.style.height = intValue2 + "px";
+        }
+        if (gc1.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc1.style.height = intValue2 + "px";
+        }
+        else if (gc2.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc2.style.height = intValue2 + "px";
+        }
+        else if (gc4.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc4.style.height = intValue2 + "px";
+        }
+        gc1.style.border = "none";
+        gc2.style.border = "none";
+        gc4.style.border = "none";
+    });
+    gc4.addEventListener('mousedown', function (event) {
+        if (gc4.style.border === "4px solid rgb(165, 165, 165)") {
+            gc4.style.border = "none";
+            const pixelValue = window.getComputedStyle(gc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc4.style.height = intValue2 + "px";
+        }
+        else {
+            gc4.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(gc4).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            gc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            gc4.style.height = intValue2 + "px";
+        }
+        if (gc1.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc1.style.height = intValue2 + "px";
+        }
+        else if (gc2.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc2.style.height = intValue2 + "px";
+        }
+        else if (gc3.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(gc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            gc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(gc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            gc3.style.height = intValue2 + "px";
+        }
+        gc1.style.border = "none";
+        gc2.style.border = "none";
+        gc3.style.border = "none";
+    });
 
-bc1.addEventListener('mousedown', function (event) {
-    if (bc1.style.border === "4px solid rgb(165, 165, 165)") {
-        bc1.style.border = "none";
-        const pixelValue = window.getComputedStyle(bc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc1.style.height = intValue2 + "px";
-    }
-    else {
-        bc1.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(bc1).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        bc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        bc1.style.height = intValue2 + "px";
-    }
-    if (bc2.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc2.style.height = intValue2 + "px";
-    }
-    else if (bc3.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc3.style.height = intValue2 + "px";
-    }
-    else if (bc4.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc4.style.height = intValue2 + "px";
-    }
-    bc2.style.border = "none";
-    bc3.style.border = "none";
-    bc4.style.border = "none";
-});
-bc2.addEventListener('mousedown', function (event) {
-    if (bc2.style.border === "4px solid rgb(165, 165, 165)") {
+    bc1.addEventListener('mousedown', function (event) {
+        if (bc1.style.border === "4px solid rgb(165, 165, 165)") {
+            bc1.style.border = "none";
+            const pixelValue = window.getComputedStyle(bc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc1.style.height = intValue2 + "px";
+        }
+        else {
+            bc1.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(bc1).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            bc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            bc1.style.height = intValue2 + "px";
+        }
+        if (bc2.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc2.style.height = intValue2 + "px";
+        }
+        else if (bc3.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc3.style.height = intValue2 + "px";
+        }
+        else if (bc4.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc4.style.height = intValue2 + "px";
+        }
         bc2.style.border = "none";
-        const pixelValue = window.getComputedStyle(bc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc2.style.height = intValue2 + "px";
-    }
-    else {
-        bc2.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(bc2).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        bc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        bc2.style.height = intValue2 + "px";
-    }
-    if (bc1.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc1.style.height = intValue2 + "px";
-    }
-    else if (bc3.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc3.style.height = intValue2 + "px";
-    }
-    else if (bc4.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc4.style.height = intValue2 + "px";
-    }
-    bc1.style.border = "none";
-    bc3.style.border = "none";
-    bc4.style.border = "none";
-});
-bc3.addEventListener('mousedown', function (event) {
-    if (bc3.style.border === "4px solid rgb(165, 165, 165)") {
         bc3.style.border = "none";
-        const pixelValue = window.getComputedStyle(bc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc3.style.height = intValue2 + "px";
-    }
-    else {
-        bc3.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(bc3).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        bc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        bc3.style.height = intValue2 + "px";
-    }
-    if (bc1.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc1.style.height = intValue2 + "px";
-    }
-    else if (bc2.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc2.style.height = intValue2 + "px";
-    }
-    else if (bc4.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc4.style.height = intValue2 + "px";
-    }
-    bc1.style.border = "none";
-    bc2.style.border = "none";
-    bc4.style.border = "none";
-});
-bc4.addEventListener('mousedown', function (event) {
-    if (bc4.style.border === "4px solid rgb(165, 165, 165)") {
         bc4.style.border = "none";
-        const pixelValue = window.getComputedStyle(bc4).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc4.style.height = intValue2 + "px";
-    }
-    else {
-        bc4.style.border = "4px solid rgb(165, 165, 165)";
-        const pixelValue = window.getComputedStyle(bc4).width;
-        const intValue = parseInt(pixelValue, 10) - 8;
-        bc4.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc4).height;
-        const intValue2 = parseInt(pixelValue2, 10) - 8;
-        bc4.style.height = intValue2 + "px";
-    }
-    if (bc1.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc1).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc1.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc1).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc1.style.height = intValue2 + "px";
-    }
-    else if (bc2.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc2).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc2.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc2).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc2.style.height = intValue2 + "px";
-    }
-    else if (bc3.style.border === "4px solid rgb(165, 165, 165)") {
-        const pixelValue = window.getComputedStyle(bc3).width;
-        const intValue = parseInt(pixelValue, 10) + 8;
-        bc3.style.width = intValue + "px";
-        const pixelValue2 = window.getComputedStyle(bc3).height;
-        const intValue2 = parseInt(pixelValue2, 10) + 8;
-        bc3.style.height = intValue2 + "px";
-    }
-    bc1.style.border = "none";
-    bc2.style.border = "none";
-    bc3.style.border = "none";
-});
+    });
+    bc2.addEventListener('mousedown', function (event) {
+        if (bc2.style.border === "4px solid rgb(165, 165, 165)") {
+            bc2.style.border = "none";
+            const pixelValue = window.getComputedStyle(bc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc2.style.height = intValue2 + "px";
+        }
+        else {
+            bc2.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(bc2).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            bc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            bc2.style.height = intValue2 + "px";
+        }
+        if (bc1.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc1.style.height = intValue2 + "px";
+        }
+        else if (bc3.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc3.style.height = intValue2 + "px";
+        }
+        else if (bc4.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc4.style.height = intValue2 + "px";
+        }
+        bc1.style.border = "none";
+        bc3.style.border = "none";
+        bc4.style.border = "none";
+    });
+    bc3.addEventListener('mousedown', function (event) {
+        if (bc3.style.border === "4px solid rgb(165, 165, 165)") {
+            bc3.style.border = "none";
+            const pixelValue = window.getComputedStyle(bc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc3.style.height = intValue2 + "px";
+        }
+        else {
+            bc3.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(bc3).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            bc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            bc3.style.height = intValue2 + "px";
+        }
+        if (bc1.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc1.style.height = intValue2 + "px";
+        }
+        else if (bc2.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc2.style.height = intValue2 + "px";
+        }
+        else if (bc4.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc4.style.height = intValue2 + "px";
+        }
+        bc1.style.border = "none";
+        bc2.style.border = "none";
+        bc4.style.border = "none";
+    });
+    bc4.addEventListener('mousedown', function (event) {
+        if (bc4.style.border === "4px solid rgb(165, 165, 165)") {
+            bc4.style.border = "none";
+            const pixelValue = window.getComputedStyle(bc4).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc4.style.height = intValue2 + "px";
+        }
+        else {
+            bc4.style.border = "4px solid rgb(165, 165, 165)";
+            const pixelValue = window.getComputedStyle(bc4).width;
+            const intValue = parseInt(pixelValue, 10) - 8;
+            bc4.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc4).height;
+            const intValue2 = parseInt(pixelValue2, 10) - 8;
+            bc4.style.height = intValue2 + "px";
+        }
+        if (bc1.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc1).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc1.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc1).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc1.style.height = intValue2 + "px";
+        }
+        else if (bc2.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc2).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc2.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc2).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc2.style.height = intValue2 + "px";
+        }
+        else if (bc3.style.border === "4px solid rgb(165, 165, 165)") {
+            const pixelValue = window.getComputedStyle(bc3).width;
+            const intValue = parseInt(pixelValue, 10) + 8;
+            bc3.style.width = intValue + "px";
+            const pixelValue2 = window.getComputedStyle(bc3).height;
+            const intValue2 = parseInt(pixelValue2, 10) + 8;
+            bc3.style.height = intValue2 + "px";
+        }
+        bc1.style.border = "none";
+        bc2.style.border = "none";
+        bc3.style.border = "none";
+    });
+}
+ColorChangerListener();
+
 
 
 
