@@ -5,10 +5,9 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #1F1F1F;
-    font-family: "MesloLGM Nerd Font";
-    font-style: normal;
+    font-family: "Madimi One", sans-serif;
     font-weight: 400;
-    src: url('fonts/MesloLGMNerdFont-Regular.ttf') format('truetype');
+    font-style: normal;
     color: #2c426b;
 
     /*transform: scale(1);*/
@@ -468,9 +467,9 @@ body {
     background-color: #717171e3;
     overflow: hidden;
     visibility: hidden;
-    flex-wrap: wrap;
 }
-.AboutTitle{
+
+.AboutTitle {
     font-size: 34px;
     color: rgb(84, 169, 254);
     display: flex;
@@ -478,16 +477,17 @@ body {
     justify-content: space-around;
     width: 17vw;
 }
-.AboutLogo{
+
+.AboutLogo {
     width: 50px;
     height: 50px;
 }
-.AboutBlock{
+
+.AboutBlock {
     width: 14vw;
     border: solid #f2f3f4 2px;
     border-radius: 15px;
-    padding: 5px;
-    flex-wrap: wrap;
+    padding: 7px;
 }
 
 @media only screen and (max-width: 1302px) {
