@@ -468,6 +468,7 @@ body {
     background-color: #717171e3;
     overflow: hidden;
     visibility: hidden;
+    flex-wrap: wrap;
 }
 .AboutTitle{
     font-size: 34px;
